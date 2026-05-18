@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://helgoiq.com/sitemap.xml

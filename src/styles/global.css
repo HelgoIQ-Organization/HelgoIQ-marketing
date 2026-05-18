@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --forest-dark: #1b3a2e;
+    --forest-mid: #2d6a4f;
+    --forest-light: #4da383;
+    --sage: #7ec2a9;
+    --cream: #f8f6f1;
+    --off-white: #fafaf8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900 font-sans antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-forest-500 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-forest-600 transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border border-forest-500 text-forest-500 px-6 py-3 rounded-lg font-medium text-sm hover:bg-forest-50 transition-all duration-200;
+  }
+
+  .btn-dark {
+    @apply inline-flex items-center gap-2 bg-white text-forest-600 px-6 py-3 rounded-lg font-medium text-sm hover:bg-cream transition-all duration-200 shadow-sm;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-forest-500;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  .feature-icon {
+    @apply w-10 h-10 rounded-xl bg-forest-50 flex items-center justify-center text-forest-500;
+  }
+
+  /* HelgoIQ wordmark — italic ℏ + upright text */
+  .wordmark-h {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+  .wordmark-rest {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+}
+
+/* Smooth scroll offset for fixed header */
+[id] {
+  scroll-margin-top: 80px;
+}
