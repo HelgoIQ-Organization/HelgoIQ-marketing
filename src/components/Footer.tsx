@@ -36,7 +36,10 @@ const footerLinks: Record<string, FooterLink[]> = {
   Legal: [
     { label: 'Privacy Policy', to: '/privacy' },
     { label: 'Terms of Service', to: '/terms' },
+    { label: 'DPA', to: '/dpa' },
     { label: 'DPIA overview', to: '/dpia' },
+    { label: 'Sub-processors', to: '/subprocessors' },
+    { label: 'Status', to: '/status' },
   ],
 }
 

@@ -77,16 +77,23 @@ export default function Privacy() {
       <LegalH2>5. Cookies</LegalH2>
       <p>
         We use cookies and similar technologies that are necessary to run the site and app (e.g.
-        session/authentication). Analytics or advertising cookies, if introduced, will be described
-        here and offered with appropriate controls on the marketing site.
+        session/authentication). Optional analytics cookies are off until you accept them via the
+        cookie banner on this marketing site. Preferences are stored locally in your browser.
       </p>
 
       <LegalH2>6. Sharing</LegalH2>
       <p>
         We share data with sub-processors only as needed to operate HelgoIQ (for example hosting,
         email/SMS delivery, payment processors, error monitoring, and authentication). We do not sell
-        personal data. A current sub-processor list will be maintained in the Trust centre as it is
-        finalised.
+        personal data. See the current list at{' '}
+        <a href="/subprocessors" className="text-forest-600 underline">
+          /subprocessors
+        </a>
+        . Processor terms are in our{' '}
+        <a href="/dpa" className="text-forest-600 underline">
+          DPA
+        </a>
+        .
       </p>
 
       <LegalH2>7. International transfers</LegalH2>

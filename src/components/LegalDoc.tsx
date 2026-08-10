@@ -42,8 +42,14 @@ export default function LegalDoc({ title, updated, holding = true, children }: P
             <Link to="/terms" className="text-forest-600 font-medium hover:underline">
               Terms
             </Link>
+            <Link to="/dpa" className="text-forest-600 font-medium hover:underline">
+              DPA
+            </Link>
             <Link to="/dpia" className="text-forest-600 font-medium hover:underline">
               DPIA overview
+            </Link>
+            <Link to="/subprocessors" className="text-forest-600 font-medium hover:underline">
+              Sub-processors
             </Link>
             <Link to="/trust" className="text-forest-600 font-medium hover:underline">
               Trust centre

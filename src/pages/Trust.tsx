@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, FileText, Scale, Shield } from 'lucide-react'
+import { Activity, ArrowRight, FileText, Network, Scale, Shield } from 'lucide-react'
 import CtaButtons from '../components/CtaButtons'
 import {
   COMPANY_LEGAL_NAME,
@@ -24,9 +24,27 @@ const docs = [
   },
   {
     icon: FileText,
+    title: 'Data Processing Agreement',
+    body: 'Holding DPA with downloadable draft — request a countersigned copy for your records.',
+    to: '/dpa',
+  },
+  {
+    icon: FileText,
     title: 'DPIA overview',
     body: 'A holding DPIA-style summary studios can use while completing their own controller assessment.',
     to: '/dpia',
+  },
+  {
+    icon: Network,
+    title: 'Sub-processors',
+    body: 'Public list of vendors that help deliver HelgoIQ (hosting, auth, payments, email, monitoring).',
+    to: '/subprocessors',
+  },
+  {
+    icon: Activity,
+    title: 'System status',
+    body: 'Live checks for the marketing site, app origin, and demo booking API proxy.',
+    to: '/status',
   },
 ]
 
@@ -42,8 +60,8 @@ export default function Trust() {
             Security & privacy for studio operators
           </h1>
           <p className="text-forest-200 text-lg leading-relaxed">
-            Clear company identity, holding legal documents, and migration diligence — so you can
-            evaluate HelgoIQ with the same seriousness you bring to member data.
+            Company identity, holding legal documents, sub-processors, DPA download, and live status
+            — so you can evaluate HelgoIQ with the same seriousness you bring to member data.
           </p>
         </div>
       </section>
@@ -80,7 +98,7 @@ export default function Trust() {
 
       <section className="py-16 bg-mist">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {docs.map(({ icon: Icon, title, body, to }) => (
               <Link
                 key={to}
@@ -93,14 +111,14 @@ export default function Trust() {
                 <h2 className="text-lg font-semibold text-gray-900 mb-2">{title}</h2>
                 <p className="text-sm text-gray-600 leading-relaxed mb-4">{body}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-medium text-forest-600">
-                  Read <ArrowRight size={14} />
+                  Open <ArrowRight size={14} />
                 </span>
               </Link>
             ))}
           </div>
           <p className="text-sm text-gray-500 mt-8 max-w-2xl">
-            Documents are marked as holding drafts until counsel sign-off. Request a Data Processing
-            Agreement via {PRIVACY_EMAIL_ADDRESS}.
+            Legal documents are marked as holding drafts until counsel sign-off. Download the DPA
+            draft or request a countersigned copy via {PRIVACY_EMAIL_ADDRESS}.
           </p>
         </div>
       </section>
