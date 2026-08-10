@@ -142,7 +142,7 @@ const signatureFeatures = [
       'Retreat and event promotion content',
       'Real-time device health dashboard',
     ],
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663542647966/M5M2NvVjN6pgnh7wTTnP7c/feature-screen-management-N8JqcCCycrYMpoUyZTQrJY.webp',
+    image: '/images/feature-screen-management.webp',
     imageAlt: 'HelgoIQ Screen Management dashboard showing connected studio displays and content playlist',
   },
   {
@@ -163,7 +163,7 @@ const signatureFeatures = [
       'Revenue and payment summary dashboard',
       'Export participant list and room allocation report',
     ],
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663542647966/M5M2NvVjN6pgnh7wTTnP7c/feature-retreat-management-K5wf2o94yvopRCeQ3HkQXG.webp',
+    image: '/images/feature-retreat-management.webp',
     imageAlt: 'HelgoIQ Retreat Management showing room allocation grid for Amorgos Greece retreat',
   },
   {
@@ -185,7 +185,7 @@ const signatureFeatures = [
       'Member retention stats linked to access patterns',
       'White-label kiosk interface with studio branding',
     ],
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663542647966/M5M2NvVjN6pgnh7wTTnP7c/feature-access-control-YT2mcCeyNXJV8N9YqQFL9F.webp',
+    image: '/images/feature-access-control.webp',
     imageAlt: 'HelgoIQ Access Control showing branded kiosk welcome screen and live access log',
   },
   {
@@ -206,7 +206,7 @@ const signatureFeatures = [
       'Location-filtered milestone report dashboard',
       'Toggle milestones on/off per studio location',
     ],
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663542647966/M5M2NvVjN6pgnh7wTTnP7c/feature-milestones-TAPXxc4MpvWmSwxM2QcCc4.webp',
+    image: '/images/feature-milestones.webp',
     imageAlt: 'HelgoIQ Milestones dashboard showing member and teacher milestone configuration with custom badges',
   },
   {
@@ -227,7 +227,7 @@ const signatureFeatures = [
       'Conversation tagging and filtering',
       'Bulk messaging from member segments',
     ],
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663542647966/M5M2NvVjN6pgnh7wTTnP7c/feature-ai-inbox-KRcnaEsKXsoM2gqJWmcoTz.webp',
+    image: '/images/feature-ai-inbox.webp',
     imageAlt: 'HelgoIQ AI-Powered Inbox showing AI draft reply with member context panel',
   },
   {
@@ -248,7 +248,7 @@ const signatureFeatures = [
       'Trial offer integration — promote your trial directly from the platform',
       'Campaign budget management',
     ],
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663542647966/M5M2NvVjN6pgnh7wTTnP7c/feature-social-meta-aoHuAjxgu25yiTsYnWAeSC.webp',
+    image: '/images/feature-social-meta.webp',
     imageAlt: 'HelgoIQ Social Media & Meta Ads dashboard showing post composer and AI ad analysis',
   },
   {
@@ -269,7 +269,7 @@ const signatureFeatures = [
       'Upload to asset library with automatic tagging',
       'Schedule newsletters in advance',
     ],
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663542647966/M5M2NvVjN6pgnh7wTTnP7c/feature-newsletter-Sdd6q58DeQwgGCDnpSw5eM.webp',
+    image: '/images/feature-newsletter.webp',
     imageAlt: 'HelgoIQ AI Newsletter Creator showing generation panel and live newsletter preview',
   },
   {
@@ -290,7 +290,7 @@ const signatureFeatures = [
       'Top praised areas and areas to improve',
       'Review volume and rating trend dashboard',
     ],
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663542647966/M5M2NvVjN6pgnh7wTTnP7c/feature-reviews-8b9nufVB4fCP2H5o5yLtSV.webp',
+    image: '/images/feature-reviews.webp',
     imageAlt: 'HelgoIQ Google Reviews & Sentiment Analysis dashboard showing AI sentiment tags and insights',
   },
 ]
