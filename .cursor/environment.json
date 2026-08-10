@@ -1,0 +1,6 @@
+{
+  "name": "HelgoIQ Marketing Site",
+  "install": "corepack pnpm install --frozen-lockfile",
+  "start": "corepack pnpm dev",
+  "ports": [4000]
+}
