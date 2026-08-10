@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Clock } from 'lucide-react'
+import { Clock } from 'lucide-react'
 import { blogPosts } from '../data/blogPosts'
+import CtaButtons from '../components/CtaButtons'
 
 export default function Blog() {
   const [featured, ...rest] = blogPosts
@@ -71,13 +72,11 @@ export default function Blog() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-cream">
+      <section className="py-16 bg-mist">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-2xl font-semibold text-gray-900 mb-3 tracking-tight">Ready to try HelgoIQ?</h2>
-          <p className="text-gray-500 mb-6">Start your free trial today. No credit card required.</p>
-          <Link to="/trial" className="btn-primary">
-            Start free trial <ArrowRight size={15} />
-          </Link>
+          <p className="text-gray-500 mb-6">Start your free trial today — or book a guided demo.</p>
+          <CtaButtons className="justify-center" />
         </div>
       </section>
     </div>

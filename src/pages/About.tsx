@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import CtaButtons from '../components/CtaButtons'
 
 const values = [
   {
@@ -120,14 +119,7 @@ export default function About() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-semibold tracking-tight mb-4">Ready to try the platform?</h2>
           <p className="text-forest-200 mb-8">Start free. No credit card required.</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/trial" className="btn-dark">
-              Start free trial <ArrowRight size={15} />
-            </Link>
-            <Link to="/features" className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-forest-500/30 transition-all">
-              Explore features
-            </Link>
-          </div>
+          <CtaButtons variant="forest" className="justify-center" />
         </div>
       </section>
     </div>

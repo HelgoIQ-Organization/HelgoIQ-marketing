@@ -1,434 +1,318 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Check, Zap, Users, BarChart3, Brain, Calendar, CreditCard, Mail, Shield } from 'lucide-react'
+import {
+  ArrowRight,
+  Brain,
+  Calendar,
+  Check,
+  CreditCard,
+  Globe2,
+  Users,
+  Zap,
+} from 'lucide-react'
+import CtaButtons from '../components/CtaButtons'
+import { BOOK_DEMO_PATH, TRIAL_SIGNUP_URL } from '../lib/urls'
 
-const APP_URL = 'https://app.helgoiq.com'
-
-const stats = [
-  { value: '26', label: 'AI-powered features' },
-  { value: '£149', label: 'Growth plan / location / mo' },
-  { value: '100%', label: 'No card required for trial' },
-  { value: '1', label: 'Platform. Everything connected.' },
+const proofStudios = [
+  {
+    name: 'REFRM Pilates',
+    role: 'Boutique reformer studio',
+    quote:
+      '[Placeholder — pending approved wording] HelgoIQ is the operating layer we wanted for bookings, memberships, and day-to-day studio clarity.',
+  },
+  {
+    name: 'Active247',
+    role: 'Multi-service fitness operator',
+    quote:
+      '[Placeholder — pending approved wording] One connected platform for scheduling, CRM follow-up, and the decisions that fill the room.',
+  },
 ]
 
-const featureTabs = [
+const pillars = [
   {
-    id: 'booking',
-    label: 'Booking',
     icon: Calendar,
-    headline: 'Scheduling that works the way your studio does',
-    description: 'Class scheduling, waitlist automation, deferred bookings, recovery sessions, and check-in — all in one connected system. When a class fills, the waitlist manages itself.',
-    bullets: ['Recurring class schedules', 'Automated waitlist management', 'Instructor substitution workflows', 'Kiosk mode for front desk check-in', 'Deferred and recovery session booking'],
+    title: 'Booking that fills the room',
+    body: 'Classes, waitlists, recovery sessions, and check-in on one timetable — so capacity and substitutions stop living in spreadsheets.',
+    to: '/features/booking',
   },
   {
-    id: 'members',
-    label: 'Members',
-    icon: Users,
-    headline: 'A complete picture of every member',
-    description: 'Member profiles that tell a story — attendance history, health score, credits, tags, and GDPR tools. Not a list of bookings. A profile that drives action.',
-    bullets: ['Member health score', 'Credit management', 'Smart member tags', 'GDPR export and anonymisation', 'CSV import and bulk management'],
+    icon: CreditCard,
+    title: 'Memberships & payments',
+    body: 'Trials, packs, memberships, and failed-payment recovery wired to the same member record your front desk already trusts.',
+    to: '/features/memberships',
   },
   {
-    id: 'crm',
-    label: 'CRM & Sales',
-    icon: BarChart3,
-    headline: 'A sales pipeline built for fitness studios',
-    description: 'Lead management, visual sales pipeline, task management, and retention sequences. The gap between a trial pack and a membership is almost always a follow-up problem.',
-    bullets: ['Visual sales pipeline', 'Lead management and tracking', 'Automated retention sequences', 'Smart member segments', 'Journey orchestrator'],
+    icon: Zap,
+    title: 'CRM that closes the gap',
+    body: 'Lead pipeline, retention sequences, and tasks built for the messy middle between a trial pack and a membership.',
+    to: '/features/crm',
   },
   {
-    id: 'ai',
-    label: 'AI Intelligence',
     icon: Brain,
-    headline: 'Intelligence that surfaces, not replaces',
-    description: 'Twenty-six AI features designed around one principle: AI should surface insights and suggest actions, but your team approves anything that goes to a member.',
-    bullets: ['AI Churn Prevention', 'AI Class Filler', 'AI Campaign Composer', 'AI Financial Forecasting', 'AI Command Centre with approval queue'],
-  },
-]
-
-const coreFeatures = [
-  { icon: Calendar, label: 'Booking & Scheduling' },
-  { icon: Users, label: 'Member Management' },
-  { icon: CreditCard, label: 'Payments & Billing' },
-  { icon: BarChart3, label: 'Analytics & Reports' },
-  { icon: Mail, label: 'Marketing Automation' },
-  { icon: Brain, label: '26 AI Features' },
-  { icon: Zap, label: 'Sales Pipeline & CRM' },
-  { icon: Shield, label: 'GDPR & Compliance' },
-]
-
-const testimonials = [
-  {
-    quote: "HelgoIQ replaced four separate tools we were using. The AI churn prevention alone has saved us more members in three months than we'd managed manually in a year.",
-    name: 'Studio Owner',
-    studio: 'Boutique Pilates Studio, London',
+    title: 'AI Command Centre',
+    body: 'Twenty-six AI surfaces for churn, fill rates, campaigns, and briefings — with human approval before anything reaches a member.',
+    to: '/features/ai',
   },
   {
-    quote: "The sales pipeline changed how we handle trials. We used to lose leads in the gap between the trial and the follow-up. Now that gap doesn't exist.",
-    name: 'Studio Manager',
-    studio: 'Reformer Pilates, Manchester',
+    icon: Globe2,
+    title: 'Websites & migration',
+    body: 'Marketing sites connected to live timetable and pricing data, with SEO-safe migration when you leave an old stack behind.',
+    to: '/features/websites',
   },
   {
-    quote: "I was sceptical about the AI features. The AI Command Centre is the thing I check first every morning. It tells me exactly what needs attention.",
-    name: 'Studio Director',
-    studio: 'Multi-location Yoga Studio',
+    icon: Users,
+    title: 'Team & ops',
+    body: 'Rota, permissions, payroll hooks, and a daily command view so owners aren’t the only people who know what’s on fire.',
+    to: '/features/team',
   },
 ]
 
 export default function Home() {
   return (
     <div>
-      {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="relative bg-forest-600 text-white overflow-hidden pt-24 pb-20 lg:pt-32 lg:pb-28">
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }} />
+      {/* Brand-first full-bleed hero — one composition */}
+      <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden text-white">
+        <div
+          className="absolute inset-0 bg-forest-700"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 hero-atmosphere"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 opacity-[0.12]"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)',
+            backgroundSize: '72px 72px',
+            maskImage: 'linear-gradient(to bottom, black 40%, transparent 95%)',
+          }}
+          aria-hidden
+        />
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left — copy */}
-            <div>
-              <div className="inline-flex items-center gap-2 bg-forest-500/40 border border-forest-400/30 rounded-full px-4 py-1.5 mb-6">
-                <span className="text-xs font-medium text-forest-200 uppercase tracking-widest">Named for Helgoland · 1925</span>
-              </div>
-
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight tracking-tight mb-6">
-                The intelligent platform for modern fitness businesses
-              </h1>
-
-              <p className="text-lg text-forest-200 leading-relaxed mb-4 max-w-lg">
-                Booking, member management, CRM, marketing automation, and 26 AI features — in one calm, connected platform.
-              </p>
-
-              <p className="text-sm text-forest-300 leading-relaxed mb-8 max-w-lg italic" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                Named for Helgoland, the small North Sea island where Heisenberg worked out quantum mechanics in 1925 — the science that, a century later, made AI possible.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link to="/trial" className="btn-dark text-base py-3 px-7">
-                  Start free trial
-                  <ArrowRight size={16} />
-                </Link>
-                <Link to="/pricing" className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-7 py-3 rounded-lg font-medium text-base hover:bg-forest-500/30 transition-all duration-200">
-                  View pricing
-                </Link>
-              </div>
-
-              <p className="text-xs text-forest-400 mt-4">No credit card required. Cancel anytime.</p>
-            </div>
-
-            {/* Right — platform screenshot mockup */}
-            <div className="relative">
-              <div className="bg-forest-500/20 border border-forest-400/20 rounded-2xl p-1 shadow-2xl">
-                <div className="bg-forest-700/50 rounded-xl overflow-hidden">
-                  {/* Browser chrome */}
-                  <div className="flex items-center gap-2 px-4 py-3 bg-forest-800/50 border-b border-forest-600/30">
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-400/60" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
-                      <div className="w-3 h-3 rounded-full bg-green-400/60" />
-                    </div>
-                    <div className="flex-1 bg-forest-700/50 rounded-md h-6 mx-4 flex items-center px-3">
-                      <span className="text-xs text-forest-400">app.helgoiq.com/dashboard</span>
-                    </div>
+        {/* Dominant product plane */}
+        <div className="absolute inset-x-0 top-[18%] bottom-0 pointer-events-none select-none">
+          <div className="max-w-6xl mx-auto px-4 h-full flex items-end justify-center">
+            <div className="w-full max-w-4xl translate-y-8 sm:translate-y-12 opacity-90 animate-fade-up-slow">
+              <div className="rounded-t-xl border border-white/15 bg-forest-800/70 backdrop-blur-sm shadow-2xl overflow-hidden">
+                <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/10 bg-forest-900/40">
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-white/25" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-white/25" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-white/25" />
                   </div>
-                  {/* Dashboard mockup */}
-                  <div className="p-4 space-y-3">
-                    {/* Stats row */}
-                    <div className="grid grid-cols-4 gap-2">
-                      {[
-                        { label: 'Active Members', value: '284', trend: '+12' },
-                        { label: 'Classes Today', value: '8', trend: '2 full' },
-                        { label: 'Revenue MTD', value: '£18.4k', trend: '+8%' },
-                        { label: 'Churn Risk', value: '3', trend: 'flagged' },
-                      ].map(stat => (
-                        <div key={stat.label} className="bg-forest-600/40 rounded-lg p-2.5">
-                          <div className="text-xs text-forest-300 mb-1">{stat.label}</div>
-                          <div className="text-lg font-semibold text-white">{stat.value}</div>
-                          <div className="text-xs text-sage">{stat.trend}</div>
-                        </div>
-                      ))}
-                    </div>
-                    {/* Schedule preview */}
-                    <div className="bg-forest-600/30 rounded-lg p-3">
-                      <div className="text-xs text-forest-300 mb-2 font-medium">Today's Schedule</div>
-                      {[
-                        { time: '07:00', name: 'Reformer Fundamentals', instructor: 'Sarah K.', spots: '12/12' },
-                        { time: '09:30', name: 'Advanced Reformer', instructor: 'James L.', spots: '8/12' },
-                        { time: '12:00', name: 'Mat Pilates', instructor: 'Emma R.', spots: '11/12' },
-                        { time: '18:30', name: 'Evening Flow', instructor: 'Sarah K.', spots: '5/12' },
-                      ].map(cls => (
-                        <div key={cls.time} className="flex items-center justify-between py-1.5 border-b border-forest-500/20 last:border-0">
-                          <div className="flex items-center gap-3">
-                            <span className="text-xs text-forest-400 w-10">{cls.time}</span>
-                            <div>
-                              <div className="text-xs font-medium text-white">{cls.name}</div>
-                              <div className="text-xs text-forest-400">{cls.instructor}</div>
-                            </div>
-                          </div>
-                          <span className={`text-xs px-2 py-0.5 rounded-full ${cls.spots.startsWith('12') ? 'bg-red-500/20 text-red-300' : 'bg-forest-500/30 text-forest-200'}`}>
-                            {cls.spots}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    {/* AI alert */}
-                    <div className="bg-amber-500/10 border border-amber-400/20 rounded-lg p-3 flex items-start gap-2">
-                      <Brain size={14} className="text-amber-400 mt-0.5 flex-shrink-0" />
-                      <div>
-                        <div className="text-xs font-medium text-amber-300">AI Churn Alert</div>
-                        <div className="text-xs text-amber-200/70">3 members showing early churn signals. Review suggested actions →</div>
-                      </div>
-                    </div>
-                  </div>
+                  <span className="text-[11px] text-white/45 ml-2">app.helgoiq.com</span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Stats bar ────────────────────────────────────────────────────────── */}
-      <section className="bg-forest-500 text-white py-5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-forest-400/30">
-            {stats.map(stat => (
-              <div key={stat.label} className="text-center lg:px-8">
-                <div className="text-2xl font-semibold text-white">{stat.value}</div>
-                <div className="text-xs text-forest-200 mt-0.5">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Core features grid ───────────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">Everything in one platform</p>
-            <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight">
-              Every tool your studio needs.<br />
-              <span className="text-forest-500">None of the fragmentation.</span>
-            </h2>
-            <p className="text-gray-500 mt-4 max-w-xl mx-auto text-base">
-              The average studio uses 5–8 disconnected tools. HelgoIQ replaces them with a single platform where every system shares the same data.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {coreFeatures.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-3 p-6 rounded-2xl border border-gray-100 hover:border-forest-200 hover:bg-forest-50/50 transition-all duration-200 group">
-                <div className="w-12 h-12 rounded-xl bg-forest-50 flex items-center justify-center text-forest-500 group-hover:bg-forest-100 transition-colors">
-                  <Icon size={22} />
-                </div>
-                <span className="text-sm font-medium text-gray-700 text-center">{label}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Link to="/features" className="btn-secondary">
-              Explore all features <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Feature tabs ─────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">Built for studio operators</p>
-            <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight">
-              Every part of your operation, connected
-            </h2>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {featureTabs.map(({ id, label, icon: Icon, headline, description, bullets }) => (
-              <div key={id} className="card p-8">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="feature-icon">
-                    <Icon size={20} />
-                  </div>
-                  <span className="text-xs font-semibold uppercase tracking-widest text-forest-500">{label}</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{headline}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-5">{description}</p>
-                <ul className="space-y-2">
-                  {bullets.map(b => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-gray-600">
-                      <Check size={15} className="text-forest-500 mt-0.5 flex-shrink-0" />
-                      {b}
-                    </li>
+                <div className="grid grid-cols-3 gap-px bg-white/5 p-3 sm:p-5">
+                  {[
+                    ['Today', '8 classes', '2 full'],
+                    ['Pipeline', '14 trials', '3 due'],
+                    ['AI focus', 'Churn', '2 flagged'],
+                  ].map(([a, b, c]) => (
+                    <div key={a} className="bg-forest-700/80 p-3 sm:p-4 min-h-[88px]">
+                      <div className="text-[10px] uppercase tracking-wider text-forest-300 mb-1">{a}</div>
+                      <div className="text-sm sm:text-base font-semibold text-white">{b}</div>
+                      <div className="text-xs text-sage mt-1">{c}</div>
+                    </div>
                   ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link to="/features" className="btn-primary">
-              See all features <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Brand story ──────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <p className="section-label mb-4">The name</p>
-          <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight mb-6">
-            Named for Helgoland.<br />
-            <span className="text-forest-500">Built for complexity.</span>
-          </h2>
-          <div className="text-gray-600 text-base leading-relaxed space-y-4 max-w-2xl mx-auto">
-            <p>
-              HelgoIQ takes its name from Helgoland, the small island in the North Sea where, in 1925, a 23-year-old Werner Heisenberg worked out the mathematics of quantum mechanics — the science that, a century later, made modern computing and AI possible.
-            </p>
-            <p>
-              The connection isn't decorative. Running a modern fitness business is its own complex system: retention, scheduling, instructor performance, demand, recovery, communication, member behaviour — every part influencing another. The platforms that help you understand it should be built with the same intellectual care.
-            </p>
-          </div>
-          <div className="mt-8">
-            <Link to="/about" className="btn-secondary">
-              Read the full story <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Testimonials ─────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-forest-600 text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-widest text-forest-300 mb-3">From studio operators</p>
-            <h2 className="text-3xl font-semibold text-white tracking-tight">What studios are saying</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-forest-500/30 border border-forest-400/20 rounded-2xl p-7">
-                <p className="text-forest-100 text-sm leading-relaxed mb-5 italic" style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem' }}>
-                  "{t.quote}"
-                </p>
-                <div>
-                  <div className="text-sm font-medium text-white">{t.name}</div>
-                  <div className="text-xs text-forest-300">{t.studio}</div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pb-16 pt-28 w-full">
+          <div className="max-w-2xl animate-fade-up">
+            <p
+              className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-5 leading-none"
+              style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}
+            >
+              HelgoIQ
+            </p>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white/95 mb-4 max-w-xl">
+              The calm operating platform for modern studios
+            </h1>
+            <p className="text-forest-100/90 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
+              Bookings, memberships, CRM, websites, and AI intelligence — one connected system for
+              operators who are done juggling tools.
+            </p>
+            <CtaButtons variant="forest" />
+            <p className="text-xs text-forest-300 mt-4">No card required for trial · Cancel anytime</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Proof — after first viewport */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <p className="section-label mb-8 text-center">Studios on HelgoIQ</p>
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            {proofStudios.map(studio => (
+              <figure key={studio.name} className="animate-fade-up">
+                <blockquote
+                  className="text-lg text-gray-700 leading-relaxed mb-4"
+                  style={{ fontFamily: 'Cormorant Garamond, serif' }}
+                >
+                  “{studio.quote}”
+                </blockquote>
+                <figcaption>
+                  <div className="text-sm font-semibold text-forest-600">{studio.name}</div>
+                  <div className="text-xs text-gray-500 mt-0.5">{studio.role}</div>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Pricing preview ──────────────────────────────────────────────────── */}
+      {/* ICP path */}
+      <section className="py-20 bg-mist">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-12">
+            <p className="section-label mb-3">Built for operators</p>
+            <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight">
+              Start with how your studio actually runs
+            </h2>
+            <p className="text-gray-600 mt-4 leading-relaxed">
+              Pilates and boutique fitness first — reformer capacity, trial conversion, and member
+              continuity — then the same platform grows with you.
+            </p>
+          </div>
+          <Link
+            to="/for/pilates"
+            className="group block max-w-3xl rounded-2xl bg-forest-600 text-white p-8 sm:p-10 relative overflow-hidden transition-transform duration-300 hover:-translate-y-0.5"
+          >
+            <div
+              className="absolute inset-0 opacity-30 pointer-events-none"
+              style={{
+                background:
+                  'radial-gradient(ellipse at 80% 20%, rgba(126,194,169,0.45), transparent 50%)',
+              }}
+            />
+            <div className="relative">
+              <p className="text-xs font-semibold uppercase tracking-widest text-forest-300 mb-3">
+                Primary ICP
+              </p>
+              <h3 className="text-2xl sm:text-3xl font-semibold mb-3">HelgoIQ for Pilates</h3>
+              <p className="text-forest-100 max-w-xl leading-relaxed mb-6">
+                Spot-aware scheduling, waitlists, intro offers, and retention workflows shaped for
+                reformer and boutique Pilates studios.
+              </p>
+              <span className="inline-flex items-center gap-2 text-sm font-medium text-white group-hover:gap-3 transition-all">
+                Explore the Pilates path <ArrowRight size={16} />
+              </span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* Feature depth */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">Simple, transparent pricing</p>
+          <div className="max-w-2xl mb-12">
+            <p className="section-label mb-3">Platform</p>
             <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight">
-              Start free. Scale when you're ready.
+              Depth where studio software usually goes shallow
             </h2>
-            <p className="text-gray-500 mt-3 text-base">No card required. No setup fees. Cancel anytime.</p>
           </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+            {pillars.map(({ icon: Icon, title, body, to }) => (
+              <Link key={to} to={to} className="group block">
+                <div className="feature-icon mb-4 group-hover:bg-forest-100 transition-colors">
+                  <Icon size={20} />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-forest-600 transition-colors">
+                  {title}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed mb-3">{body}</p>
+                <span className="text-sm font-medium text-forest-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Learn more <ArrowRight size={14} />
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-12">
+            <Link to="/features" className="btn-secondary">
+              View all features <ArrowRight size={15} />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      {/* Dual path pricing tease */}
+      <section className="py-20 bg-forest-600 text-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-forest-300 mb-3">
+              Two ways in
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight mb-4">
+              Self-serve trial or a guided demo
+            </h2>
+            <p className="text-forest-200 leading-relaxed mb-6">
+              Core starts free. Growth and Premium unlock analytics, automation, and the full AI
+              suite. Enterprise is for multi-location groups who want a walkthrough first.
+            </p>
+            <ul className="space-y-2 mb-8">
+              {[
+                'Start free trial → app signup with owner binding',
+                'Book a demo → pick a live slot with our team',
+                'Transparent plans: Core · Growth · Premium · Enterprise',
+              ].map(item => (
+                <li key={item} className="flex items-start gap-2 text-sm text-forest-100">
+                  <Check size={15} className="text-sage mt-0.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <CtaButtons variant="forest" />
+          </div>
+          <div className="space-y-4">
             {[
-              {
-                name: 'Core',
-                price: 'Free to start',
-                description: 'Full booking, member management, payments, and CRM.',
-                cta: 'Start free',
-                featured: false,
-                features: ['Class scheduling & booking', 'Member management', 'Payments (Stripe + GoCardless)', 'Sales pipeline & CRM', 'Email & push notifications', 'GDPR tools'],
-              },
-              {
-                name: 'Growth',
-                price: '£149',
-                period: '/location/mo',
-                description: 'Analytics, marketing automation, and advanced CRM.',
-                cta: 'Start free trial',
-                featured: true,
-                features: ['Everything in Core', 'Full analytics & reporting', 'Marketing automation', 'Campaign builder', 'Staff rota & payroll', 'Referral programme'],
-              },
-              {
-                name: 'Premium',
-                price: '£249',
-                period: '/location/mo',
-                description: '26 AI features, advanced automation, and enterprise reporting.',
-                cta: 'Start free trial',
-                featured: false,
-                features: ['Everything in Growth', '26 AI-powered features', 'AI Churn Prevention', 'AI Campaign Composer', 'AI Financial Forecasting', 'AI Command Centre'],
-              },
+              { name: 'Core', price: 'Free to start', note: 'Booking, members, payments, CRM' },
+              { name: 'Growth', price: '£149/location', note: 'Analytics, marketing, staff ops' },
+              { name: 'Premium', price: '£249/location', note: '26 AI features + Command Centre' },
             ].map(plan => (
               <div
                 key={plan.name}
-                className={`rounded-2xl p-7 flex flex-col ${
-                  plan.featured
-                    ? 'bg-forest-600 text-white shadow-xl ring-2 ring-forest-500 scale-105'
-                    : 'bg-white border border-gray-200'
-                }`}
+                className="flex items-baseline justify-between gap-4 border-b border-forest-500/60 pb-4"
               >
-                {plan.featured && (
-                  <div className="text-xs font-semibold uppercase tracking-widest text-forest-200 mb-3">Most popular</div>
-                )}
-                <div className="mb-5">
-                  <h3 className={`text-lg font-semibold mb-1 ${plan.featured ? 'text-white' : 'text-gray-900'}`}>{plan.name}</h3>
-                  <div className="flex items-baseline gap-1">
-                    <span className={`text-3xl font-bold ${plan.featured ? 'text-white' : 'text-gray-900'}`}>{plan.price}</span>
-                    {plan.period && <span className={`text-sm ${plan.featured ? 'text-forest-200' : 'text-gray-400'}`}>{plan.period}</span>}
-                  </div>
-                  <p className={`text-sm mt-2 ${plan.featured ? 'text-forest-200' : 'text-gray-500'}`}>{plan.description}</p>
+                <div>
+                  <div className="font-semibold">{plan.name}</div>
+                  <div className="text-sm text-forest-300">{plan.note}</div>
                 </div>
-                <ul className="space-y-2 flex-1 mb-6">
-                  {plan.features.map(f => (
-                    <li key={f} className="flex items-start gap-2 text-sm">
-                      <Check size={14} className={`mt-0.5 flex-shrink-0 ${plan.featured ? 'text-sage' : 'text-forest-500'}`} />
-                      <span className={plan.featured ? 'text-forest-100' : 'text-gray-600'}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/trial"
-                  className={`text-center py-2.5 px-5 rounded-lg text-sm font-medium transition-all ${
-                    plan.featured
-                      ? 'bg-white text-forest-600 hover:bg-cream'
-                      : 'bg-forest-500 text-white hover:bg-forest-600'
-                  }`}
-                >
-                  {plan.cta}
-                </Link>
+                <div className="text-forest-100 font-medium whitespace-nowrap">{plan.price}</div>
               </div>
             ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Link to="/pricing" className="text-sm text-forest-500 hover:text-forest-600 font-medium">
-              Compare all plans in detail →
+            <Link to="/pricing" className="inline-flex items-center gap-2 text-sm font-medium text-sage hover:text-white transition-colors pt-2">
+              Compare plans <ArrowRight size={14} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── CTA banner ───────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-cream">
+      <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight mb-4">
-            Ready to run your studio with clarity?
+          <p
+            className="text-3xl sm:text-4xl text-forest-600 mb-4"
+            style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}
+          >
+            HelgoIQ
+          </p>
+          <h2 className="text-3xl font-semibold text-gray-900 tracking-tight mb-4">
+            Ready when your studio is
           </h2>
-          <p className="text-gray-500 text-base mb-8">
-            Start your free trial today. No credit card required. Full platform access from day one.
+          <p className="text-gray-600 mb-8 leading-relaxed">
+            Named for Helgoland — where Heisenberg worked out quantum mechanics in 1925. Built for
+            the complexity of running a modern studio without the chaos of five tools.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/trial" className="btn-primary text-base py-3 px-8">
+            <a href={TRIAL_SIGNUP_URL} className="btn-primary text-base py-3 px-8">
               Start free trial <ArrowRight size={16} />
-            </Link>
-            <a href="mailto:hello@helgoiq.com" className="btn-secondary text-base py-3 px-8">
-              Talk to us
             </a>
+            <Link to={BOOK_DEMO_PATH} className="btn-secondary text-base py-3 px-8">
+              Book a demo
+            </Link>
           </div>
         </div>
       </section>

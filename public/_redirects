@@ -1,0 +1,3 @@
+# SPA fallback — keep API Functions out of the rewrite
+/api/*  /api/:splat  200
+/*    /index.html   200

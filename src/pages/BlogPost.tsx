@@ -1,7 +1,8 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { ArrowLeft, Clock, ArrowRight } from 'lucide-react'
+import { ArrowLeft, Clock } from 'lucide-react'
 import { blogPosts } from '../data/blogPosts'
+import CtaButtons from '../components/CtaButtons'
 
 function renderMarkdown(content: string): string {
   return content
@@ -94,9 +95,7 @@ export default function BlogPost() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-2xl font-semibold tracking-tight mb-3">Ready to try HelgoIQ?</h2>
           <p className="text-forest-200 mb-6">Start your free trial today. No credit card required.</p>
-          <Link to="/trial" className="btn-dark">
-            Start free trial <ArrowRight size={15} />
-          </Link>
+          <CtaButtons variant="forest" className="justify-center" />
         </div>
       </section>
     </div>

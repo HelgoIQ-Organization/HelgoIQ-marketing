@@ -10,21 +10,23 @@ export default {
           200: '#b3dbcc',
           300: '#7ec2a9',
           400: '#4da383',
-          500: '#2d6a4f',  // wordmark green
-          600: '#1b3a2e',  // brand dark green
+          500: '#2d6a4f',
+          600: '#1b3a2e',
           700: '#152e24',
           800: '#10221b',
           900: '#0a1610',
         },
         sage: '#7ec2a9',
-        cream: '#f8f6f1',
+        mist: '#eef3f0',
+        cream: '#eef3f0', // legacy alias → mist (avoid warm cream cliché)
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Manrope', 'system-ui', 'sans-serif'],
         display: ['Cormorant Garamond', 'Georgia', 'serif'],
       },
       animation: {
-        'fade-up': 'fadeUp 0.6s ease-out forwards',
+        'fade-up': 'fadeUp 0.7s ease-out forwards',
+        'fade-up-slow': 'fadeUp 1.1s ease-out forwards',
         'fade-in': 'fadeIn 0.5s ease-out forwards',
       },
       keyframes: {

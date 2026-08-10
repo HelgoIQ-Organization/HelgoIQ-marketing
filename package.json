@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite --port 4000",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:preview": "pnpm build && wrangler pages deploy dist --project-name=$CLOUDFLARE_PAGES_PROJECT --branch=preview --commit-dirty=true"
   },
   "dependencies": {
     "react": "^18.2.0",
