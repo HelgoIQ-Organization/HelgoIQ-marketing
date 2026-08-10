@@ -11,6 +11,12 @@ import BlogPost from './pages/BlogPost'
 import Trial from './pages/Trial'
 import BookDemo from './pages/BookDemo'
 import ForPilates from './pages/ForPilates'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
+import Dpia from './pages/Dpia'
+import Trust from './pages/Trust'
+import Migrate from './pages/Migrate'
+import Contact from './pages/Contact'
 
 export default function App() {
   return (
@@ -29,6 +35,12 @@ export default function App() {
             <Route path="/trial" element={<Trial />} />
             <Route path="/book-demo" element={<BookDemo />} />
             <Route path="/for/pilates" element={<ForPilates />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/dpia" element={<Dpia />} />
+            <Route path="/trust" element={<Trust />} />
+            <Route path="/migrate" element={<Migrate />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />

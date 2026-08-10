@@ -28,6 +28,7 @@ export default function Header() {
     { label: 'Features', to: '/features' },
     { label: 'Pricing', to: '/pricing' },
     { label: 'For Pilates', to: '/for/pilates' },
+    { label: 'Switch', to: '/migrate' },
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
   ]
