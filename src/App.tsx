@@ -3,11 +3,14 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Features from './pages/Features'
+import FeatureDetail from './pages/FeatureDetail'
 import Pricing from './pages/Pricing'
 import About from './pages/About'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Trial from './pages/Trial'
+import BookDemo from './pages/BookDemo'
+import ForPilates from './pages/ForPilates'
 
 export default function App() {
   return (
@@ -18,11 +21,14 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/features" element={<Features />} />
+            <Route path="/features/:slug" element={<FeatureDetail />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/trial" element={<Trial />} />
+            <Route path="/book-demo" element={<BookDemo />} />
+            <Route path="/for/pilates" element={<ForPilates />} />
           </Routes>
         </main>
         <Footer />

@@ -8,8 +8,8 @@
     --forest-mid: #2d6a4f;
     --forest-light: #4da383;
     --sage: #7ec2a9;
-    --cream: #f8f6f1;
-    --off-white: #fafaf8;
+    --mist: #eef3f0;
+    --off-white: #f7faf8;
   }
 
   html {
@@ -35,7 +35,7 @@
   }
 
   .btn-dark {
-    @apply inline-flex items-center gap-2 bg-white text-forest-600 px-6 py-3 rounded-lg font-medium text-sm hover:bg-cream transition-all duration-200 shadow-sm;
+    @apply inline-flex items-center gap-2 bg-white text-forest-600 px-6 py-3 rounded-lg font-medium text-sm hover:bg-mist transition-all duration-200 shadow-sm;
   }
 
   .section-label {
@@ -50,19 +50,24 @@
     @apply w-10 h-10 rounded-xl bg-forest-50 flex items-center justify-center text-forest-500;
   }
 
-  /* HelgoIQ wordmark — italic ℏ + upright text */
   .wordmark-h {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 500;
   }
   .wordmark-rest {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-weight: 500;
+  }
+
+  .hero-atmosphere {
+    background:
+      radial-gradient(ellipse 90% 70% at 15% 10%, rgba(77, 163, 131, 0.45), transparent 55%),
+      radial-gradient(ellipse 80% 60% at 85% 30%, rgba(27, 58, 46, 0.85), transparent 50%),
+      linear-gradient(165deg, #1b3a2e 0%, #152e24 45%, #0a1610 100%);
   }
 }
 
-/* Smooth scroll offset for fixed header */
 [id] {
   scroll-margin-top: 80px;
 }

@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
-
-const APP_URL = 'https://app.helgoiq.com'
+import { BOOK_DEMO_PATH, SIGN_IN_URL, TRIAL_SIGNUP_URL } from '../lib/urls'
 
 const included = [
   'Full booking and scheduling system',
@@ -9,23 +9,24 @@ const included = [
   'Sales pipeline and CRM',
   'Email and push notifications',
   'GDPR compliance tools',
+  'Owner-bound studio setup wizard after signup',
   'No credit card required',
-  'Cancel anytime',
 ]
 
 export default function Trial() {
   return (
-    <div className="pt-16 min-h-screen bg-gray-50">
+    <div className="pt-16 min-h-screen bg-mist">
       <div className="max-w-5xl mx-auto px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left — copy */}
           <div>
             <p className="section-label mb-3">Free trial</p>
             <h1 className="text-4xl font-semibold text-gray-900 tracking-tight mb-4">
               Start free.<br />No card required.
             </h1>
-            <p className="text-gray-500 text-base leading-relaxed mb-8">
-              Get full access to the HelgoIQ Core platform from day one. No credit card, no setup fee, no commitment. When you are ready to grow, upgrade to Growth or Premium.
+            <p className="text-gray-600 text-base leading-relaxed mb-8">
+              Create your HelgoIQ account and land in the setup wizard as the studio owner — brand,
+              company, location, and trial subscription wired for you. Prefer a guided tour first?
+              Book a demo instead.
             </p>
 
             <div className="space-y-3 mb-8">
@@ -39,23 +40,26 @@ export default function Trial() {
               ))}
             </div>
 
-            <div className="bg-forest-50 border border-forest-100 rounded-xl p-5">
-              <p className="text-sm text-forest-700 leading-relaxed italic" style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem' }}>
-                "Named for Helgoland — where Heisenberg worked out quantum mechanics in 1925. The same intellectual rigour, applied to running a modern fitness business."
-              </p>
-            </div>
+            <p className="text-sm text-gray-500">
+              Want a walkthrough before you commit?{' '}
+              <Link to={BOOK_DEMO_PATH} className="text-forest-600 font-medium hover:underline">
+                Book a demo
+              </Link>
+            </p>
           </div>
 
-          {/* Right — sign-up card */}
           <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-1">Create your account</h2>
-            <p className="text-sm text-gray-500 mb-6">Start with the Core plan — free forever. Upgrade anytime.</p>
+            <h2 className="text-xl font-semibold text-gray-900 mb-1">Create your studio</h2>
+            <p className="text-sm text-gray-500 mb-6">
+              Continues to <span className="font-medium text-gray-700">app.helgoiq.com/signup</span>{' '}
+              — the self-serve owner path (not a bare Clerk sign-up link).
+            </p>
 
             <a
-              href={`${APP_URL}/sign-up`}
+              href={TRIAL_SIGNUP_URL}
               className="btn-primary w-full justify-center text-base py-3 mb-4"
             >
-              Create free account <ArrowRight size={16} />
+              Start free trial <ArrowRight size={16} />
             </a>
 
             <div className="relative flex items-center gap-3 mb-4">
@@ -65,11 +69,18 @@ export default function Trial() {
             </div>
 
             <a
-              href={`${APP_URL}/sign-in`}
-              className="btn-secondary w-full justify-center text-base py-3"
+              href={SIGN_IN_URL}
+              className="btn-secondary w-full justify-center text-base py-3 mb-3"
             >
               Sign in to existing account
             </a>
+
+            <Link
+              to={BOOK_DEMO_PATH}
+              className="w-full inline-flex items-center justify-center gap-2 text-sm font-medium text-forest-600 hover:text-forest-700 py-2"
+            >
+              Book a demo instead
+            </Link>
 
             <p className="text-xs text-gray-400 text-center mt-5 leading-relaxed">
               By creating an account you agree to our{' '}

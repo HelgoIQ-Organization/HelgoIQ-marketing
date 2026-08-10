@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-
-const APP_URL = 'https://app.helgoiq.com'
+import { BOOK_DEMO_PATH, SIGN_IN_URL, TRIAL_SIGNUP_URL } from '../lib/urls'
 
 // Pages that have a dark hero — header starts transparent with white text
-const DARK_HERO_PAGES = ['/']
+const DARK_HERO_PAGES = ['/', '/book-demo', '/for/pilates']
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -28,11 +27,13 @@ export default function Header() {
   const navLinks = [
     { label: 'Features', to: '/features' },
     { label: 'Pricing', to: '/pricing' },
+    { label: 'For Pilates', to: '/for/pilates' },
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
   ]
 
-  const isActive = (to: string) => location.pathname === to
+  const isActive = (to: string) =>
+    location.pathname === to || location.pathname.startsWith(`${to}/`)
 
   return (
     <header
@@ -40,14 +41,13 @@ export default function Header() {
         scrolled
           ? 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100'
           : hasDarkHero
-          ? 'bg-transparent'
-          : 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100'
+            ? 'bg-transparent'
+            : 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-18">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-0 group">
+          <Link to="/" className="flex items-center gap-0 group" aria-label="HelgoIQ home">
             <span
               className={`text-2xl font-medium leading-none transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-forest-600'}`}
               style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}
@@ -56,22 +56,25 @@ export default function Header() {
             </span>
             <span
               className={`text-2xl font-medium leading-none transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-forest-600'}`}
-              style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}
+              style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.02em' }}
             >
               elgoIQ
             </span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map(link => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150 ${
                   isActive(link.to)
-                    ? isTransparent ? 'text-white bg-white/10' : 'text-forest-600 bg-forest-50'
-                    : isTransparent ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-gray-600 hover:text-forest-600 hover:bg-gray-50'
+                    ? isTransparent
+                      ? 'text-white bg-white/10'
+                      : 'text-forest-600 bg-forest-50'
+                    : isTransparent
+                      ? 'text-white/80 hover:text-white hover:bg-white/10'
+                      : 'text-gray-600 hover:text-forest-600 hover:bg-gray-50'
                 }`}
               >
                 {link.label}
@@ -79,25 +82,30 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2 lg:gap-3">
             <a
-              href={`${APP_URL}/sign-in`}
-              className={`text-sm font-medium transition-colors px-3 py-2 ${
+              href={SIGN_IN_URL}
+              className={`text-sm font-medium transition-colors px-2 py-2 ${
                 isTransparent ? 'text-white/80 hover:text-white' : 'text-gray-600 hover:text-forest-600'
               }`}
             >
               Sign in
             </a>
             <Link
-              to="/trial"
-              className="btn-primary text-sm py-2 px-5"
+              to={BOOK_DEMO_PATH}
+              className={`text-sm font-medium transition-colors px-3 py-2 rounded-lg ${
+                isTransparent
+                  ? 'text-white border border-white/35 hover:bg-white/10'
+                  : 'text-forest-600 border border-forest-200 hover:bg-forest-50'
+              }`}
             >
-              Start free trial
+              Book a demo
             </Link>
+            <a href={TRIAL_SIGNUP_URL} className="btn-primary text-sm py-2 px-4 lg:px-5">
+              Start free trial
+            </a>
           </div>
 
-          {/* Mobile menu button */}
           <button
             className={`md:hidden p-2 rounded-lg transition-colors ${
               isTransparent ? 'text-white hover:bg-white/10' : 'text-gray-600 hover:bg-gray-100'
@@ -110,7 +118,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
@@ -129,17 +136,20 @@ export default function Header() {
             ))}
             <div className="border-t border-gray-100 mt-2 pt-3 flex flex-col gap-2">
               <a
-                href={`${APP_URL}/sign-in`}
+                href={SIGN_IN_URL}
                 className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
               >
                 Sign in
               </a>
               <Link
-                to="/trial"
-                className="btn-primary justify-center"
+                to={BOOK_DEMO_PATH}
+                className="btn-secondary justify-center"
               >
-                Start free trial
+                Book a demo
               </Link>
+              <a href={TRIAL_SIGNUP_URL} className="btn-primary justify-center">
+                Start free trial
+              </a>
             </div>
           </div>
         </div>

@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Calendar, Users, CreditCard, BarChart3, Mail, Brain, Shield, Zap, Building2, Monitor, MapPin, Lock, Award, MessageSquare, Share2, Newspaper, Star as StarIcon, CheckCircle2 } from 'lucide-react'
+import CtaButtons from '../components/CtaButtons'
+import { featurePages } from '../data/featurePages'
+import { TRIAL_SIGNUP_URL } from '../lib/urls'
 
 const coreFeatureGroups = [
   {
@@ -305,13 +308,33 @@ export default function Features() {
           <p className="text-forest-200 text-lg max-w-2xl mx-auto leading-relaxed">
             HelgoIQ replaces the 5–8 disconnected tools most studios use with a single platform where every system shares the same data layer.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
-            <Link to="/trial" className="btn-dark">
-              Start free trial <ArrowRight size={15} />
-            </Link>
-            <Link to="/pricing" className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-forest-500/30 transition-all">
-              View pricing
-            </Link>
+          <CtaButtons variant="forest" className="justify-center mt-8" size="sm" />
+        </div>
+      </section>
+
+      {/* Deep feature pages */}
+      <section className="py-14 bg-mist border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <p className="section-label mb-4">Go deeper</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {featurePages.map(page => {
+              const Icon = page.icon
+              return (
+                <Link
+                  key={page.slug}
+                  to={`/features/${page.slug}`}
+                  className="group bg-white border border-gray-100 rounded-xl p-5 hover:border-forest-200 transition-colors"
+                >
+                  <div className="feature-icon mb-3">
+                    <Icon size={18} />
+                  </div>
+                  <div className="font-semibold text-gray-900 group-hover:text-forest-600 transition-colors">
+                    {page.label}
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1 line-clamp-2">{page.support}</p>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -333,7 +356,7 @@ export default function Features() {
               <a
                 key={id}
                 href={`#${id}`}
-                className="flex-shrink-0 text-xs font-medium text-gray-500 hover:text-forest-600 px-3 py-1.5 rounded-full hover:bg-forest-50 transition-all whitespace-nowrap"
+                className="flex-shrink-0 text-xs font-medium text-gray-500 hover:text-forest-600 px-3 py-1.5 rounded-lg hover:bg-forest-50 transition-all whitespace-nowrap"
               >
                 {label}
               </a>
@@ -379,9 +402,9 @@ export default function Features() {
                       </li>
                     ))}
                   </ul>
-                  <Link to="/trial" className="btn-primary text-sm">
-                    Try it free <ArrowRight size={14} />
-                  </Link>
+                  <a href={TRIAL_SIGNUP_URL} className="btn-primary text-sm">
+                    Start free trial <ArrowRight size={14} />
+                  </a>
                 </div>
 
                 {/* Screenshot */}
@@ -424,9 +447,9 @@ export default function Features() {
                 </div>
                 <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900 tracking-tight mb-4">{headline}</h2>
                 <p className="text-gray-500 leading-relaxed mb-6">{description}</p>
-                <Link to="/trial" className="btn-primary text-sm">
-                  Try it free <ArrowRight size={14} />
-                </Link>
+                <a href={TRIAL_SIGNUP_URL} className="btn-primary text-sm">
+                  Start free trial <ArrowRight size={14} />
+                </a>
               </div>
               <div className={`bg-gray-50 rounded-2xl p-6 ${idx % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                 <ul className="space-y-3">
@@ -456,9 +479,9 @@ export default function Features() {
               <p className="text-gray-500 leading-relaxed mb-6">
                 Twenty-six AI features designed around one principle: AI should surface insights and suggest actions, but your team approves anything that goes to a member. The AI Governance module routes all AI-generated communications through an approval queue.
               </p>
-              <Link to="/trial" className="btn-primary text-sm">
-                Try it free <ArrowRight size={14} />
-              </Link>
+              <a href={TRIAL_SIGNUP_URL} className="btn-primary text-sm">
+                Start free trial <ArrowRight size={14} />
+              </a>
             </div>
             <div className="bg-forest-600 rounded-2xl p-6 text-white">
               <p className="text-forest-300 text-xs font-semibold uppercase tracking-widest mb-4">26 AI features include</p>
@@ -493,10 +516,8 @@ export default function Features() {
       <section className="py-20 bg-forest-600 text-white">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-semibold tracking-tight mb-4">Ready to see it in action?</h2>
-          <p className="text-forest-200 mb-8">Start your free trial today. No credit card required. Full platform access from day one.</p>
-          <Link to="/trial" className="btn-dark">
-            Start free trial <ArrowRight size={15} />
-          </Link>
+          <p className="text-forest-200 mb-8">Start your free trial today — or book a guided demo with our team.</p>
+          <CtaButtons variant="forest" className="justify-center" />
         </div>
       </section>
     </div>

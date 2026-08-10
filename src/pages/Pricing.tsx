@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
-import { Check, Minus, ArrowRight } from 'lucide-react'
+import { Check, Minus } from 'lucide-react'
+import CtaButtons from '../components/CtaButtons'
+import { BOOK_DEMO_PATH, TRIAL_SIGNUP_URL } from '../lib/urls'
 
 const plans = [
   {
@@ -130,9 +132,10 @@ export default function Pricing() {
           <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight mb-4">
             Simple, transparent pricing
           </h1>
-          <p className="text-forest-200 text-lg">
-            Start free. No credit card required. Scale when you're ready.
+          <p className="text-forest-200 text-lg mb-8">
+            Start free. No credit card required. Scale when you're ready — or book a demo for Enterprise and multi-location paths.
           </p>
+          <CtaButtons variant="forest" className="justify-center" size="sm" />
         </div>
       </section>
 
@@ -159,23 +162,23 @@ export default function Pricing() {
                   {plan.description}
                 </p>
                 {plan.isEnterprise ? (
-                  <a
-                    href="mailto:hello@helgoiq.com"
+                  <Link
+                    to={BOOK_DEMO_PATH}
                     className={`text-center py-2.5 px-4 rounded-lg text-sm font-medium transition-all ${
-                      plan.featured ? 'bg-white text-forest-600 hover:bg-cream' : 'bg-forest-500 text-white hover:bg-forest-600'
+                      plan.featured ? 'bg-white text-forest-600 hover:bg-mist' : 'bg-forest-500 text-white hover:bg-forest-600'
+                    }`}
+                  >
+                    Book a demo
+                  </Link>
+                ) : (
+                  <a
+                    href={TRIAL_SIGNUP_URL}
+                    className={`text-center py-2.5 px-4 rounded-lg text-sm font-medium transition-all ${
+                      plan.featured ? 'bg-white text-forest-600 hover:bg-mist' : 'bg-forest-500 text-white hover:bg-forest-600'
                     }`}
                   >
                     {plan.cta}
                   </a>
-                ) : (
-                  <Link
-                    to="/trial"
-                    className={`text-center py-2.5 px-4 rounded-lg text-sm font-medium transition-all ${
-                      plan.featured ? 'bg-white text-forest-600 hover:bg-cream' : 'bg-forest-500 text-white hover:bg-forest-600'
-                    }`}
-                  >
-                    {plan.cta}
-                  </Link>
                 )}
               </div>
             ))}
@@ -274,14 +277,7 @@ export default function Pricing() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-semibold tracking-tight mb-4">Start free today</h2>
           <p className="text-forest-200 mb-8">No credit card. No setup fee. Full platform access from day one.</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/trial" className="btn-dark">
-              Start free trial <ArrowRight size={15} />
-            </Link>
-            <a href="mailto:hello@helgoiq.com" className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-forest-500/30 transition-all">
-              Talk to us about Enterprise
-            </a>
-          </div>
+          <CtaButtons variant="forest" className="justify-center" demoLabel="Book a demo (Enterprise)" />
         </div>
       </section>
     </div>

@@ -1,26 +1,29 @@
 import { Link } from 'react-router-dom'
+import { BOOK_DEMO_PATH, CONTACT_EMAIL, SIGN_IN_URL, TRIAL_SIGNUP_URL } from '../lib/urls'
 
-const APP_URL = 'https://app.helgoiq.com'
+type FooterLink = { label: string; to?: string; href?: string }
 
-const footerLinks = {
+const footerLinks: Record<string, FooterLink[]> = {
   Product: [
     { label: 'Features', to: '/features' },
     { label: 'Pricing', to: '/pricing' },
-    { label: 'Start free trial', to: '/trial' },
-    { label: 'Sign in', href: `${APP_URL}/sign-in` },
+    { label: 'For Pilates studios', to: '/for/pilates' },
+    { label: 'Start free trial', href: TRIAL_SIGNUP_URL },
+    { label: 'Book a demo', to: BOOK_DEMO_PATH },
+    { label: 'Sign in', href: SIGN_IN_URL },
   ],
   Platform: [
-    { label: 'Booking & Scheduling', to: '/features#booking' },
-    { label: 'Member Management', to: '/features#members' },
-    { label: 'CRM & Sales Pipeline', to: '/features#crm' },
-    { label: 'Marketing Automation', to: '/features#marketing' },
-    { label: 'AI Intelligence', to: '/features#ai' },
-    { label: 'Payments', to: '/features#payments' },
+    { label: 'Booking & Scheduling', to: '/features/booking' },
+    { label: 'Memberships & Payments', to: '/features/memberships' },
+    { label: 'CRM & Marketing', to: '/features/crm' },
+    { label: 'AI Command Centre', to: '/features/ai' },
+    { label: 'Websites & Migration', to: '/features/websites' },
+    { label: 'Team & Ops', to: '/features/team' },
   ],
   Company: [
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
-    { label: 'Contact', href: 'mailto:hello@helgoiq.com' },
+    { label: 'Contact', href: CONTACT_EMAIL },
   ],
   Legal: [
     { label: 'Privacy Policy', to: '/privacy' },
@@ -31,33 +34,43 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-forest-600 text-white">
-      {/* Main footer */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-0 mb-4">
-              <span className="text-2xl font-medium text-white leading-none" style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}>
+            <Link to="/" className="flex items-center gap-0 mb-4" aria-label="HelgoIQ home">
+              <span
+                className="text-2xl font-medium text-white leading-none"
+                style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}
+              >
                 ℏ
               </span>
-              <span className="text-2xl font-medium text-white leading-none" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}>
+              <span
+                className="text-2xl font-medium text-white leading-none"
+                style={{ fontFamily: 'Manrope, sans-serif', letterSpacing: '-0.02em' }}
+              >
                 elgoIQ
               </span>
             </Link>
             <p className="text-forest-200 text-sm leading-relaxed max-w-xs">
-              The intelligent platform for modern fitness businesses. Named for Helgoland — where quantum mechanics began.
+              The intelligent operating platform for modern fitness studios. Named for Helgoland —
+              where quantum mechanics began.
             </p>
-            <div className="mt-6">
-              <Link
-                to="/trial"
-                className="inline-flex items-center gap-2 bg-white text-forest-600 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-cream transition-colors"
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <a
+                href={TRIAL_SIGNUP_URL}
+                className="inline-flex items-center justify-center gap-2 bg-white text-forest-600 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-mist transition-colors"
               >
                 Start free trial
+              </a>
+              <Link
+                to={BOOK_DEMO_PATH}
+                className="inline-flex items-center justify-center gap-2 border border-forest-400/50 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-forest-500/40 transition-colors"
+              >
+                Book a demo
               </Link>
             </div>
           </div>
 
-          {/* Link columns */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
               <h3 className="text-xs font-semibold uppercase tracking-widest text-forest-300 mb-4">
@@ -66,9 +79,9 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map(link => (
                   <li key={link.label}>
-                    {'to' in link ? (
+                    {link.to ? (
                       <Link
-                        to={link.to!}
+                        to={link.to}
                         className="text-sm text-forest-200 hover:text-white transition-colors"
                       >
                         {link.label}
@@ -89,13 +102,15 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-forest-500">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-forest-300 text-xs">
             © {new Date().getFullYear()} HelgoIQ Ltd. All rights reserved.
           </p>
-          <p className="text-forest-400 text-xs italic" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+          <p
+            className="text-forest-400 text-xs italic"
+            style={{ fontFamily: 'Cormorant Garamond, serif' }}
+          >
             Named for Helgoland — where Heisenberg worked out quantum mechanics in 1925.
           </p>
         </div>
