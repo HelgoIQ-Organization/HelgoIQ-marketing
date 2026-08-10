@@ -1,6 +1,6 @@
 {
   "name": "HelgoIQ marketing site",
-  "install": "pnpm install --frozen-lockfile",
+  "install": "CI=true pnpm install --frozen-lockfile",
   "terminals": [
     {
       "name": "dev",
