@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
-
-const APP_URL = 'https://app.helgoiq.com'
+import { DEMO_PATH, SIGN_IN_URL, SIGNUP_URL } from '../lib/cta'
 
 const footerLinks = {
   Product: [
     { label: 'Features', to: '/features' },
     { label: 'Pricing', to: '/pricing' },
-    { label: 'Start free trial', to: '/trial' },
-    { label: 'Sign in', href: `${APP_URL}/sign-in` },
+    { label: 'Start free trial', href: SIGNUP_URL },
+    { label: 'Book a demo', to: DEMO_PATH },
+    { label: 'Sign in', href: SIGN_IN_URL },
   ],
   Platform: [
     { label: 'Booking & Scheduling', to: '/features#booking' },
@@ -31,10 +31,8 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-forest-600 text-white">
-      {/* Main footer */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Brand column */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-0 mb-4">
               <span className="text-2xl font-medium text-white leading-none" style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}>
@@ -47,17 +45,22 @@ export default function Footer() {
             <p className="text-forest-200 text-sm leading-relaxed max-w-xs">
               The intelligent platform for modern fitness businesses. Named for Helgoland — where quantum mechanics began.
             </p>
-            <div className="mt-6">
-              <Link
-                to="/trial"
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={SIGNUP_URL}
                 className="inline-flex items-center gap-2 bg-white text-forest-600 px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-cream transition-colors"
               >
                 Start free trial
+              </a>
+              <Link
+                to={DEMO_PATH}
+                className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-forest-500/30 transition-colors"
+              >
+                Book a demo
               </Link>
             </div>
           </div>
 
-          {/* Link columns */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
               <h3 className="text-xs font-semibold uppercase tracking-widest text-forest-300 mb-4">
@@ -89,7 +92,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-forest-500">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-forest-300 text-xs">

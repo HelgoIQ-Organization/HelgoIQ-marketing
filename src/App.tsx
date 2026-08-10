@@ -8,6 +8,7 @@ import About from './pages/About'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Trial from './pages/Trial'
+import BookDemo from './pages/BookDemo'
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/trial" element={<Trial />} />
+            <Route path="/book-demo" element={<BookDemo />} />
           </Routes>
         </main>
         <Footer />

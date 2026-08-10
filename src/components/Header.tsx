@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-
-const APP_URL = 'https://app.helgoiq.com'
+import { DEMO_PATH, SIGN_IN_URL, SIGNUP_URL } from '../lib/cta'
 
 // Pages that have a dark hero — header starts transparent with white text
 const DARK_HERO_PAGES = ['/']
@@ -46,7 +45,6 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-18">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-0 group">
             <span
               className={`text-2xl font-medium leading-none transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-forest-600'}`}
@@ -62,7 +60,6 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map(link => (
               <Link
@@ -79,10 +76,9 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
             <a
-              href={`${APP_URL}/sign-in`}
+              href={SIGN_IN_URL}
               className={`text-sm font-medium transition-colors px-3 py-2 ${
                 isTransparent ? 'text-white/80 hover:text-white' : 'text-gray-600 hover:text-forest-600'
               }`}
@@ -90,14 +86,20 @@ export default function Header() {
               Sign in
             </a>
             <Link
-              to="/trial"
-              className="btn-primary text-sm py-2 px-5"
+              to={DEMO_PATH}
+              className={`text-sm font-medium px-3 py-2 rounded-lg transition-colors ${
+                isTransparent
+                  ? 'text-white/90 hover:bg-white/10'
+                  : 'text-forest-600 hover:bg-forest-50'
+              }`}
             >
-              Start free trial
+              Book a demo
             </Link>
+            <a href={SIGNUP_URL} className="btn-primary text-sm py-2 px-5">
+              Start free trial
+            </a>
           </div>
 
-          {/* Mobile menu button */}
           <button
             className={`md:hidden p-2 rounded-lg transition-colors ${
               isTransparent ? 'text-white hover:bg-white/10' : 'text-gray-600 hover:bg-gray-100'
@@ -110,7 +112,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1">
@@ -129,17 +130,20 @@ export default function Header() {
             ))}
             <div className="border-t border-gray-100 mt-2 pt-3 flex flex-col gap-2">
               <a
-                href={`${APP_URL}/sign-in`}
+                href={SIGN_IN_URL}
                 className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
               >
                 Sign in
               </a>
               <Link
-                to="/trial"
-                className="btn-primary justify-center"
+                to={DEMO_PATH}
+                className="btn-secondary justify-center"
               >
-                Start free trial
+                Book a demo
               </Link>
+              <a href={SIGNUP_URL} className="btn-primary justify-center">
+                Start free trial
+              </a>
             </div>
           </div>
         </div>

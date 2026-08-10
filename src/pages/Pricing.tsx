@@ -1,5 +1,8 @@
+import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { Check, Minus, ArrowRight } from 'lucide-react'
+import { Check, Minus } from 'lucide-react'
+import CtaGroup from '../components/CtaGroup'
+import { DEMO_PATH, SIGNUP_URL } from '../lib/cta'
 
 const plans = [
   {
@@ -34,7 +37,7 @@ const plans = [
     price: 'Custom',
     period: '',
     description: 'Negotiated per-tenant pricing for multi-location groups and franchise operators.',
-    cta: 'Talk to us',
+    cta: 'Book a demo',
     featured: false,
     color: 'border-gray-200',
     isEnterprise: true,
@@ -159,23 +162,23 @@ export default function Pricing() {
                   {plan.description}
                 </p>
                 {plan.isEnterprise ? (
+                  <Link
+                    to={DEMO_PATH}
+                    className={`text-center py-2.5 px-4 rounded-lg text-sm font-medium transition-all ${
+                      plan.featured ? 'bg-white text-forest-600 hover:bg-cream' : 'bg-forest-500 text-white hover:bg-forest-600'
+                    }`}
+                  >
+                    Book a demo
+                  </Link>
+                ) : (
                   <a
-                    href="mailto:hello@helgoiq.com"
+                    href={SIGNUP_URL}
                     className={`text-center py-2.5 px-4 rounded-lg text-sm font-medium transition-all ${
                       plan.featured ? 'bg-white text-forest-600 hover:bg-cream' : 'bg-forest-500 text-white hover:bg-forest-600'
                     }`}
                   >
                     {plan.cta}
                   </a>
-                ) : (
-                  <Link
-                    to="/trial"
-                    className={`text-center py-2.5 px-4 rounded-lg text-sm font-medium transition-all ${
-                      plan.featured ? 'bg-white text-forest-600 hover:bg-cream' : 'bg-forest-500 text-white hover:bg-forest-600'
-                    }`}
-                  >
-                    {plan.cta}
-                  </Link>
                 )}
               </div>
             ))}
@@ -206,8 +209,8 @@ export default function Pricing() {
               </thead>
               <tbody>
                 {comparisonRows.map(group => (
-                  <>
-                    <tr key={group.category} className="bg-gray-50 border-t border-gray-100">
+                  <Fragment key={group.category}>
+                    <tr className="bg-gray-50 border-t border-gray-100">
                       <td colSpan={5} className="px-6 py-3 text-xs font-semibold uppercase tracking-widest text-forest-500">
                         {group.category}
                       </td>
@@ -221,7 +224,7 @@ export default function Pricing() {
                         <td className="px-4 py-3 text-center"><Cell value={f.enterprise} /></td>
                       </tr>
                     ))}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
             </table>
@@ -273,15 +276,8 @@ export default function Pricing() {
       <section className="py-16 bg-forest-600 text-white">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-semibold tracking-tight mb-4">Start free today</h2>
-          <p className="text-forest-200 mb-8">No credit card. No setup fee. Full platform access from day one.</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/trial" className="btn-dark">
-              Start free trial <ArrowRight size={15} />
-            </Link>
-            <a href="mailto:hello@helgoiq.com" className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-forest-500/30 transition-all">
-              Talk to us about Enterprise
-            </a>
-          </div>
+          <p className="text-forest-200 mb-8">No credit card. No setup fee. Full platform access from day one — or book a demo for multi-location plans.</p>
+          <CtaGroup variant="on-forest" className="justify-center" />
         </div>
       </section>
     </div>

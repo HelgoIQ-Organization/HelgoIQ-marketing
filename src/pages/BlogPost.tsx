@@ -94,9 +94,14 @@ export default function BlogPost() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-2xl font-semibold tracking-tight mb-3">Ready to try HelgoIQ?</h2>
           <p className="text-forest-200 mb-6">Start your free trial today. No credit card required.</p>
-          <Link to="/trial" className="btn-dark">
-            Start free trial <ArrowRight size={15} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="https://app.helgoiq.com/signup" className="btn-dark">
+              Start free trial <ArrowRight size={15} />
+            </a>
+            <Link to="/book-demo" className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-forest-500/30 transition-all">
+              Book a demo
+            </Link>
+          </div>
         </div>
       </section>
     </div>

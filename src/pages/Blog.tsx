@@ -75,9 +75,14 @@ export default function Blog() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-2xl font-semibold text-gray-900 mb-3 tracking-tight">Ready to try HelgoIQ?</h2>
           <p className="text-gray-500 mb-6">Start your free trial today. No credit card required.</p>
-          <Link to="/trial" className="btn-primary">
-            Start free trial <ArrowRight size={15} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="https://app.helgoiq.com/signup" className="btn-primary">
+              Start free trial <ArrowRight size={15} />
+            </a>
+            <Link to="/book-demo" className="btn-secondary">
+              Book a demo
+            </Link>
+          </div>
         </div>
       </section>
     </div>

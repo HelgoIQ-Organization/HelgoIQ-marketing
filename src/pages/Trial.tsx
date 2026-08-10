@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
-
-const APP_URL = 'https://app.helgoiq.com'
+import { DEMO_PATH, SIGN_IN_URL, SIGNUP_URL } from '../lib/cta'
 
 const included = [
   'Full booking and scheduling system',
@@ -18,7 +18,6 @@ export default function Trial() {
     <div className="pt-16 min-h-screen bg-gray-50">
       <div className="max-w-5xl mx-auto px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left — copy */}
           <div>
             <p className="section-label mb-3">Free trial</p>
             <h1 className="text-4xl font-semibold text-gray-900 tracking-tight mb-4">
@@ -41,18 +40,21 @@ export default function Trial() {
 
             <div className="bg-forest-50 border border-forest-100 rounded-xl p-5">
               <p className="text-sm text-forest-700 leading-relaxed italic" style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem' }}>
-                "Named for Helgoland — where Heisenberg worked out quantum mechanics in 1925. The same intellectual rigour, applied to running a modern fitness business."
+                Prefer a guided walkthrough first?{' '}
+                <Link to={DEMO_PATH} className="font-medium not-italic underline decoration-forest-300 hover:decoration-forest-600">
+                  Book a demo
+                </Link>
+                {' '}— 30 or 45 minutes with someone who knows boutique studio operations.
               </p>
             </div>
           </div>
 
-          {/* Right — sign-up card */}
           <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-1">Create your account</h2>
             <p className="text-sm text-gray-500 mb-6">Start with the Core plan — free forever. Upgrade anytime.</p>
 
             <a
-              href={`${APP_URL}/sign-up`}
+              href={SIGNUP_URL}
               className="btn-primary w-full justify-center text-base py-3 mb-4"
             >
               Create free account <ArrowRight size={16} />
@@ -65,7 +67,7 @@ export default function Trial() {
             </div>
 
             <a
-              href={`${APP_URL}/sign-in`}
+              href={SIGN_IN_URL}
               className="btn-secondary w-full justify-center text-base py-3"
             >
               Sign in to existing account

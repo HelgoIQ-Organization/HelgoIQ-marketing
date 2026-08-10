@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Check, Zap, Users, BarChart3, Brain, Calendar, CreditCard, Mail, Shield } from 'lucide-react'
-
-const APP_URL = 'https://app.helgoiq.com'
+import CtaGroup from '../components/CtaGroup'
+import { featuredStudios, socialProof } from '../data/socialProof'
+import { SIGNUP_URL } from '../lib/cta'
 
 const stats = [
   { value: '26', label: 'AI-powered features' },
@@ -56,21 +57,33 @@ const coreFeatures = [
   { icon: Shield, label: 'GDPR & Compliance' },
 ]
 
-const testimonials = [
+const platformPillars = [
   {
-    quote: "HelgoIQ replaced four separate tools we were using. The AI churn prevention alone has saved us more members in three months than we'd managed manually in a year.",
-    name: 'Studio Owner',
-    studio: 'Boutique Pilates Studio, London',
+    title: 'Run your studio',
+    copy: 'Scheduling, payments, members, staff, and check-in on one data layer — so the front desk and back office stay in sync.',
+    links: [
+      { label: 'Booking & scheduling', to: '/features#booking' },
+      { label: 'Payments & billing', to: '/features#payments' },
+      { label: 'Staff & operations', to: '/features#staff' },
+    ],
   },
   {
-    quote: "The sales pipeline changed how we handle trials. We used to lose leads in the gap between the trial and the follow-up. Now that gap doesn't exist.",
-    name: 'Studio Manager',
-    studio: 'Reformer Pilates, Manchester',
+    title: 'Grow membership',
+    copy: 'CRM, automations, referrals, and campaigns that close the gap between a trial and a long-term member.',
+    links: [
+      { label: 'CRM & sales pipeline', to: '/features#crm' },
+      { label: 'Marketing automation', to: '/features#marketing' },
+      { label: 'Milestones & reviews', to: '/features#milestones' },
+    ],
   },
   {
-    quote: "I was sceptical about the AI features. The AI Command Centre is the thing I check first every morning. It tells me exactly what needs attention.",
-    name: 'Studio Director',
-    studio: 'Multi-location Yoga Studio',
+    title: 'Operate with intelligence',
+    copy: 'Twenty-six AI features that surface churn risk, fill classes, and draft campaigns — with human approval before anything sends.',
+    links: [
+      { label: 'AI Command Centre', to: '/features#ai' },
+      { label: 'Analytics & reporting', to: '/features#analytics' },
+      { label: 'Studio screens & access', to: '/features#screen-management' },
+    ],
   },
 ]
 
@@ -79,50 +92,41 @@ export default function Home() {
     <div>
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="relative bg-forest-600 text-white overflow-hidden pt-24 pb-20 lg:pt-32 lg:pb-28">
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }} />
+        <div
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 20% 20%, #7ec2a9 0%, transparent 40%), radial-gradient(circle at 80% 0%, #4da383 0%, transparent 35%), linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
+            backgroundSize: 'auto, auto, 60px 60px, 60px 60px',
+          }}
+        />
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left — copy */}
-            <div>
-              <div className="inline-flex items-center gap-2 bg-forest-500/40 border border-forest-400/30 rounded-full px-4 py-1.5 mb-6">
-                <span className="text-xs font-medium text-forest-200 uppercase tracking-widest">Named for Helgoland · 1925</span>
-              </div>
+            <div className="animate-fade-up">
+              <p
+                className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-none mb-5"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                <span style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}>ℏ</span>
+                <span style={{ fontFamily: 'Inter, sans-serif' }}>elgoIQ</span>
+              </p>
 
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight tracking-tight mb-6">
-                The intelligent platform for modern fitness businesses
+              <h1 className="text-3xl lg:text-4xl xl:text-[2.75rem] font-semibold leading-tight tracking-tight mb-5">
+                The studio platform that runs booking, CRM, and AI in one place
               </h1>
 
-              <p className="text-lg text-forest-200 leading-relaxed mb-4 max-w-lg">
-                Booking, member management, CRM, marketing automation, and 26 AI features — in one calm, connected platform.
+              <p className="text-lg text-forest-200 leading-relaxed mb-8 max-w-lg">
+                Scheduling, members, payments, marketing, and 26 AI features — built for boutique fitness operators who are done stitching tools together.
               </p>
 
-              <p className="text-sm text-forest-300 leading-relaxed mb-8 max-w-lg italic" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                Named for Helgoland, the small North Sea island where Heisenberg worked out quantum mechanics in 1925 — the science that, a century later, made AI possible.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link to="/trial" className="btn-dark text-base py-3 px-7">
-                  Start free trial
-                  <ArrowRight size={16} />
-                </Link>
-                <Link to="/pricing" className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-7 py-3 rounded-lg font-medium text-base hover:bg-forest-500/30 transition-all duration-200">
-                  View pricing
-                </Link>
-              </div>
-
+              <CtaGroup variant="on-forest" />
               <p className="text-xs text-forest-400 mt-4">No credit card required. Cancel anytime.</p>
             </div>
 
-            {/* Right — platform screenshot mockup */}
-            <div className="relative">
+            <div className="relative animate-fade-in" style={{ animationDelay: '120ms' }}>
               <div className="bg-forest-500/20 border border-forest-400/20 rounded-2xl p-1 shadow-2xl">
                 <div className="bg-forest-700/50 rounded-xl overflow-hidden">
-                  {/* Browser chrome */}
                   <div className="flex items-center gap-2 px-4 py-3 bg-forest-800/50 border-b border-forest-600/30">
                     <div className="flex gap-1.5">
                       <div className="w-3 h-3 rounded-full bg-red-400/60" />
@@ -133,9 +137,7 @@ export default function Home() {
                       <span className="text-xs text-forest-400">app.helgoiq.com/dashboard</span>
                     </div>
                   </div>
-                  {/* Dashboard mockup */}
                   <div className="p-4 space-y-3">
-                    {/* Stats row */}
                     <div className="grid grid-cols-4 gap-2">
                       {[
                         { label: 'Active Members', value: '284', trend: '+12' },
@@ -150,7 +152,6 @@ export default function Home() {
                         </div>
                       ))}
                     </div>
-                    {/* Schedule preview */}
                     <div className="bg-forest-600/30 rounded-lg p-3">
                       <div className="text-xs text-forest-300 mb-2 font-medium">Today's Schedule</div>
                       {[
@@ -173,7 +174,6 @@ export default function Home() {
                         </div>
                       ))}
                     </div>
-                    {/* AI alert */}
                     <div className="bg-amber-500/10 border border-amber-400/20 rounded-lg p-3 flex items-start gap-2">
                       <Brain size={14} className="text-amber-400 mt-0.5 flex-shrink-0" />
                       <div>
@@ -189,6 +189,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Social proof strip ───────────────────────────────────────────────── */}
+      <section className="bg-white border-b border-gray-100 py-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-5">
+            Trusted by operators including
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+            {featuredStudios.map(studio => (
+              <div key={studio.name} className="text-center">
+                <div
+                  className="text-2xl text-forest-700 tracking-tight"
+                  style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 600 }}
+                >
+                  {studio.name}
+                </div>
+                <div className="text-[11px] uppercase tracking-widest text-gray-400 mt-1">{studio.location}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Stats bar ────────────────────────────────────────────────────────── */}
       <section className="bg-forest-500 text-white py-5">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -197,6 +219,38 @@ export default function Home() {
               <div key={stat.label} className="text-center lg:px-8">
                 <div className="text-2xl font-semibold text-white">{stat.value}</div>
                 <div className="text-xs text-forest-200 mt-0.5">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Platform pillars (Arketa-style depth) ─────────────────────────────── */}
+      <section className="py-20 bg-cream/60">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="section-label mb-3">Platform depth</p>
+            <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight">
+              Everything you run today — plus what fragmented tools can't
+            </h2>
+            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+              Operate the studio, grow membership, and use AI with approval workflows — without bouncing between five logins.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {platformPillars.map(pillar => (
+              <div key={pillar.title} className="border-t-2 border-forest-500 pt-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{pillar.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed mb-5">{pillar.copy}</p>
+                <ul className="space-y-2">
+                  {pillar.links.map(link => (
+                    <li key={link.to}>
+                      <Link to={link.to} className="text-sm font-medium text-forest-600 hover:text-forest-700 inline-flex items-center gap-1">
+                        {link.label} <ArrowRight size={13} />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -290,7 +344,7 @@ export default function Home() {
               HelgoIQ takes its name from Helgoland, the small island in the North Sea where, in 1925, a 23-year-old Werner Heisenberg worked out the mathematics of quantum mechanics — the science that, a century later, made modern computing and AI possible.
             </p>
             <p>
-              The connection isn't decorative. Running a modern fitness business is its own complex system: retention, scheduling, instructor performance, demand, recovery, communication, member behaviour — every part influencing another. The platforms that help you understand it should be built with the same intellectual care.
+              The connection isn't decorative. Running a modern fitness business is its own complex system: retention, scheduling, instructor performance, demand, recovery, communication, member behaviour — every part influencing another.
             </p>
           </div>
           <div className="mt-8">
@@ -306,17 +360,22 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-xs font-semibold uppercase tracking-widest text-forest-300 mb-3">From studio operators</p>
-            <h2 className="text-3xl font-semibold text-white tracking-tight">What studios are saying</h2>
+            <h2 className="text-3xl font-semibold text-white tracking-tight">Studios growing with HelgoIQ</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-forest-500/30 border border-forest-400/20 rounded-2xl p-7">
-                <p className="text-forest-100 text-sm leading-relaxed mb-5 italic" style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem' }}>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {socialProof.map(t => (
+              <div key={t.studio} className="bg-forest-500/30 border border-forest-400/20 rounded-2xl p-7">
+                {t.placeholder && (
+                  <span className="inline-block text-[10px] uppercase tracking-widest text-amber-200/90 bg-amber-500/15 border border-amber-400/20 rounded px-2 py-0.5 mb-4">
+                    Quote pending approval
+                  </span>
+                )}
+                <p className="text-forest-100 text-sm leading-relaxed mb-5 italic" style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.05rem' }}>
                   "{t.quote}"
                 </p>
                 <div>
-                  <div className="text-sm font-medium text-white">{t.name}</div>
-                  <div className="text-xs text-forest-300">{t.studio}</div>
+                  <div className="text-sm font-medium text-white">{t.studio}</div>
+                  <div className="text-xs text-forest-300">{t.role} · {t.location}</div>
                 </div>
               </div>
             ))}
@@ -391,8 +450,8 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  to="/trial"
+                <a
+                  href={SIGNUP_URL}
                   className={`text-center py-2.5 px-5 rounded-lg text-sm font-medium transition-all ${
                     plan.featured
                       ? 'bg-white text-forest-600 hover:bg-cream'
@@ -400,7 +459,7 @@ export default function Home() {
                   }`}
                 >
                   {plan.cta}
-                </Link>
+                </a>
               </div>
             ))}
           </div>
@@ -420,16 +479,9 @@ export default function Home() {
             Ready to run your studio with clarity?
           </h2>
           <p className="text-gray-500 text-base mb-8">
-            Start your free trial today. No credit card required. Full platform access from day one.
+            Start free, or book a live demo with someone who knows boutique fitness operations.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/trial" className="btn-primary text-base py-3 px-8">
-              Start free trial <ArrowRight size={16} />
-            </Link>
-            <a href="mailto:hello@helgoiq.com" className="btn-secondary text-base py-3 px-8">
-              Talk to us
-            </a>
-          </div>
+          <CtaGroup className="justify-center" />
         </div>
       </section>
     </div>

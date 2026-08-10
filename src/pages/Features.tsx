@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
 import { ArrowRight, Calendar, Users, CreditCard, BarChart3, Mail, Brain, Shield, Zap, Building2, Monitor, MapPin, Lock, Award, MessageSquare, Share2, Newspaper, Star as StarIcon, CheckCircle2 } from 'lucide-react'
+import CtaGroup from '../components/CtaGroup'
+import { SIGNUP_URL } from '../lib/cta'
 
 const coreFeatureGroups = [
   {
@@ -105,6 +106,23 @@ const coreFeatureGroups = [
     ],
   },
   {
+    id: 'marketing',
+    icon: Mail,
+    label: 'Marketing Automation',
+    headline: 'Stay in front of members without living in an email tool',
+    description: 'Campaigns, journeys, landing pages, referrals, and gift cards — connected to the same member data as booking and CRM, so every message has context.',
+    features: [
+      'Email communications and broadcasts',
+      'Push notifications tied to membership events',
+      'Campaign builder with segments',
+      'Journey orchestrator for lifecycle automation',
+      'Landing pages for trials and offers',
+      'Referral programme',
+      'Gift cards and discount codes',
+      'Google Ads integration for trial acquisition',
+    ],
+  },
+  {
     id: 'compliance',
     icon: Shield,
     label: 'Compliance & Security',
@@ -117,6 +135,39 @@ const coreFeatureGroups = [
       'Role-based access control',
       'Secure payment processing (PCI compliant via Stripe)',
       'Data retention policies',
+    ],
+  },
+]
+
+const featureMap = [
+  {
+    title: 'Run your business',
+    items: [
+      { name: 'Classes + check-in', detail: 'One calendar for recurring classes, waitlists, substitutions, and kiosk check-in.' },
+      { name: 'Analytics + reporting', detail: 'Revenue, retention, funnels, and instructor performance without exporting to spreadsheets.' },
+      { name: 'Staff management', detail: 'Rota, substitutions, permissions, expenses, and payroll-ready records.' },
+      { name: 'Events and retreats', detail: 'Room allocation, deposits, itineraries, and participant communications in-product.' },
+      { name: 'Access + studio screens', detail: 'QR access, branded welcome moments, and playlist-driven wall displays.' },
+    ],
+  },
+  {
+    title: 'Growth + marketing',
+    items: [
+      { name: 'Marketing automation', detail: 'Email, push, journeys, and campaigns that use live membership context.' },
+      { name: 'Lead management + CRM', detail: 'Capture trials, move them through a visual pipeline, and close the follow-up gap.' },
+      { name: 'Milestones + recognition', detail: 'Member and teacher badges, rewards, and AI-managed celebration touchpoints.' },
+      { name: 'Referrals, reviews + loyalty', detail: 'Referral programmes and Google review sentiment with suggested replies.' },
+      { name: 'Social + Meta ads', detail: 'Compose posts, run Meta campaigns, and get plain-language AI performance insights.' },
+    ],
+  },
+  {
+    title: 'Advanced intelligence',
+    items: [
+      { name: 'AI Command Centre', detail: 'One queue for churn, class fill, and campaign suggestions — approve before anything sends.' },
+      { name: 'AI churn + trial conversion', detail: 'Surface at-risk members and prioritise trials most likely to convert.' },
+      { name: 'AI inbox drafts', detail: 'Context-aware reply suggestions with health score and attendance beside every thread.' },
+      { name: 'Financial forecasting', detail: 'Revenue and cash-flow projections grounded in your booking and billing data.' },
+      { name: 'Newsletter creator', detail: 'Generate on-brand monthly newsletters from live studio data in minutes.' },
     ],
   },
 ]
@@ -305,13 +356,33 @@ export default function Features() {
           <p className="text-forest-200 text-lg max-w-2xl mx-auto leading-relaxed">
             HelgoIQ replaces the 5–8 disconnected tools most studios use with a single platform where every system shares the same data layer.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
-            <Link to="/trial" className="btn-dark">
-              Start free trial <ArrowRight size={15} />
-            </Link>
-            <Link to="/pricing" className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-forest-500/30 transition-all">
-              View pricing
-            </Link>
+          <CtaGroup variant="on-forest" className="justify-center mt-8" />
+        </div>
+      </section>
+
+      {/* Arketa-parity feature map */}
+      <section className="py-16 bg-cream/50 border-b border-forest-100">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="section-label mb-3">Feature map</p>
+            <h2 className="text-3xl font-semibold text-gray-900 tracking-tight">
+              Everything you run today, plus what fragmented stacks miss
+            </h2>
+          </div>
+          <div className="grid lg:grid-cols-3 gap-10">
+            {featureMap.map(group => (
+              <div key={group.title}>
+                <h3 className="text-lg font-semibold text-forest-700 mb-5 pb-3 border-b border-forest-200">{group.title}</h3>
+                <ul className="space-y-5">
+                  {group.items.map(item => (
+                    <li key={item.name}>
+                      <div className="font-medium text-gray-900 text-sm mb-1">{item.name}</div>
+                      <p className="text-sm text-gray-500 leading-relaxed">{item.detail}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -325,6 +396,7 @@ export default function Features() {
               { id: 'booking', label: 'Booking' },
               { id: 'members', label: 'Members' },
               { id: 'crm', label: 'CRM' },
+              { id: 'marketing', label: 'Marketing' },
               { id: 'analytics', label: 'Analytics' },
               { id: 'ai', label: 'AI (26)' },
               { id: 'staff', label: 'Staff' },
@@ -379,9 +451,9 @@ export default function Features() {
                       </li>
                     ))}
                   </ul>
-                  <Link to="/trial" className="btn-primary text-sm">
+                  <a href={SIGNUP_URL} className="btn-primary text-sm">
                     Try it free <ArrowRight size={14} />
-                  </Link>
+                  </a>
                 </div>
 
                 {/* Screenshot */}
@@ -424,9 +496,9 @@ export default function Features() {
                 </div>
                 <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900 tracking-tight mb-4">{headline}</h2>
                 <p className="text-gray-500 leading-relaxed mb-6">{description}</p>
-                <Link to="/trial" className="btn-primary text-sm">
+                <a href={SIGNUP_URL} className="btn-primary text-sm">
                   Try it free <ArrowRight size={14} />
-                </Link>
+                </a>
               </div>
               <div className={`bg-gray-50 rounded-2xl p-6 ${idx % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                 <ul className="space-y-3">
@@ -456,9 +528,9 @@ export default function Features() {
               <p className="text-gray-500 leading-relaxed mb-6">
                 Twenty-six AI features designed around one principle: AI should surface insights and suggest actions, but your team approves anything that goes to a member. The AI Governance module routes all AI-generated communications through an approval queue.
               </p>
-              <Link to="/trial" className="btn-primary text-sm">
+              <a href={SIGNUP_URL} className="btn-primary text-sm">
                 Try it free <ArrowRight size={14} />
-              </Link>
+              </a>
             </div>
             <div className="bg-forest-600 rounded-2xl p-6 text-white">
               <p className="text-forest-300 text-xs font-semibold uppercase tracking-widest mb-4">26 AI features include</p>
@@ -493,10 +565,8 @@ export default function Features() {
       <section className="py-20 bg-forest-600 text-white">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-semibold tracking-tight mb-4">Ready to see it in action?</h2>
-          <p className="text-forest-200 mb-8">Start your free trial today. No credit card required. Full platform access from day one.</p>
-          <Link to="/trial" className="btn-dark">
-            Start free trial <ArrowRight size={15} />
-          </Link>
+          <p className="text-forest-200 mb-8">Start free, or book a live demo tailored to your studio type.</p>
+          <CtaGroup variant="on-forest" className="justify-center" />
         </div>
       </section>
     </div>
