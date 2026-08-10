@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom'
-import { BOOK_DEMO_PATH, CONTACT_EMAIL, SIGN_IN_URL, TRIAL_SIGNUP_URL } from '../lib/urls'
+import {
+  COMPANY_DISPLAY_NAME,
+  COMPANY_NUMBER,
+  COMPANY_NUMBER_URL,
+  REGISTERED_OFFICE_SINGLE_LINE,
+} from '../lib/company'
+import { BOOK_DEMO_PATH, SIGN_IN_URL, TRIAL_SIGNUP_URL } from '../lib/urls'
 
 type FooterLink = { label: string; to?: string; href?: string }
 
@@ -8,6 +14,7 @@ const footerLinks: Record<string, FooterLink[]> = {
     { label: 'Features', to: '/features' },
     { label: 'Pricing', to: '/pricing' },
     { label: 'For Pilates studios', to: '/for/pilates' },
+    { label: 'Switch / migrate', to: '/migrate' },
     { label: 'Start free trial', href: TRIAL_SIGNUP_URL },
     { label: 'Book a demo', to: BOOK_DEMO_PATH },
     { label: 'Sign in', href: SIGN_IN_URL },
@@ -23,11 +30,16 @@ const footerLinks: Record<string, FooterLink[]> = {
   Company: [
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
-    { label: 'Contact', href: CONTACT_EMAIL },
+    { label: 'Contact', to: '/contact' },
+    { label: 'Trust centre', to: '/trust' },
   ],
   Legal: [
     { label: 'Privacy Policy', to: '/privacy' },
     { label: 'Terms of Service', to: '/terms' },
+    { label: 'DPA', to: '/dpa' },
+    { label: 'DPIA overview', to: '/dpia' },
+    { label: 'Sub-processors', to: '/subprocessors' },
+    { label: 'Status', to: '/status' },
   ],
 }
 
@@ -55,6 +67,21 @@ export default function Footer() {
               The intelligent operating platform for modern fitness studios. Named for Helgoland —
               where quantum mechanics began.
             </p>
+            <div className="mt-5 text-xs text-forest-300 leading-relaxed space-y-1 max-w-sm">
+              <p className="font-medium text-forest-100">{COMPANY_DISPLAY_NAME}</p>
+              <p>
+                Company No.{' '}
+                <a
+                  href={COMPANY_NUMBER_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-white underline-offset-2 hover:underline"
+                >
+                  {COMPANY_NUMBER}
+                </a>
+              </p>
+              <p>{REGISTERED_OFFICE_SINGLE_LINE}</p>
+            </div>
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
                 href={TRIAL_SIGNUP_URL}
@@ -104,11 +131,12 @@ export default function Footer() {
 
       <div className="border-t border-forest-500">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-forest-300 text-xs">
-            © {new Date().getFullYear()} HelgoIQ Ltd. All rights reserved.
+          <p className="text-forest-300 text-xs text-center sm:text-left">
+            © {new Date().getFullYear()} {COMPANY_DISPLAY_NAME}. Company No. {COMPANY_NUMBER}.
+            Registered in England and Wales.
           </p>
           <p
-            className="text-forest-400 text-xs italic"
+            className="text-forest-400 text-xs italic text-center sm:text-right"
             style={{ fontFamily: 'Cormorant Garamond, serif' }}
           >
             Named for Helgoland — where Heisenberg worked out quantum mechanics in 1925.
