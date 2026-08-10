@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="HelgoIQ">
+  <rect width="64" height="64" rx="12" fill="#10221c"/>
+  <path d="M18 16h8v16h12V16h8v32h-8V39H26v9h-8V16Z" fill="#f7f5ee"/>
+  <path d="M48 47c-4 3-10 4-16 4s-12-1-16-4" fill="none" stroke="#d96d5b" stroke-width="5" stroke-linecap="round"/>
+</svg>

@@ -23,13 +23,19 @@ export default function About() {
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="bg-forest-600 text-white py-20 lg:py-28">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-forest-300 mb-4">About HelgoIQ</p>
+      <section className="relative text-white py-20 lg:py-28 overflow-hidden">
+        <img
+          src="/images/helgoland-hero.webp"
+          alt="Helgoland coastline in the North Sea"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-forest-900/70" aria-hidden />
+        <div className="relative max-w-4xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-semibold uppercase tracking-widest text-forest-200 mb-4">About HelgoIQ</p>
           <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight mb-6 max-w-2xl">
             Named for an island.<br />Built for a complex system.
           </h1>
-          <p className="text-forest-200 text-lg leading-relaxed max-w-xl">
+          <p className="text-forest-50/90 text-lg leading-relaxed max-w-xl">
             HelgoIQ is the intelligent platform for modern fitness businesses. This is where the name comes from, and why it matters.
           </p>
         </div>
