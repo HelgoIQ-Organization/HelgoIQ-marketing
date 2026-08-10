@@ -1,3 +1,2 @@
-# SPA fallback — keep API Functions out of the rewrite
-/api/*  /api/:splat  200
+# SPA fallback for client routes. /api/* is served by Pages Functions.
 /*    /index.html   200
