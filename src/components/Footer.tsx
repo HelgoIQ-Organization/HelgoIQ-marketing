@@ -32,6 +32,7 @@ const footerLinks: Record<string, FooterLink[]> = {
     { label: 'Blog', to: '/blog' },
     { label: 'Contact', to: '/contact' },
     { label: 'Trust centre', to: '/trust' },
+    { label: 'Brand assets', to: '/brand' },
   ],
   Legal: [
     { label: 'Privacy Policy', to: '/privacy' },
