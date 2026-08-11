@@ -4,7 +4,10 @@ import {
   COMPANY_LEGAL_NAME,
   COMPANY_NUMBER,
   COMPANY_NUMBER_URL,
+  COMPLIANCE_EMAIL_ADDRESS,
   CONTACT_EMAIL_ADDRESS,
+  LEGAL_EMAIL_ADDRESS,
+  PRIVACY_EMAIL_ADDRESS,
   REGISTERED_OFFICE,
 } from '../lib/company'
 import { BOOK_DEMO_PATH, TRIAL_SIGNUP_URL } from '../lib/urls'
@@ -41,8 +44,12 @@ export default function Contact() {
               >
                 {CONTACT_EMAIL_ADDRESS}
               </a>
-              <p className="text-sm text-gray-500 mt-2">
-                Privacy / DPIA / DPA requests: privacy@helgoiq.com
+              <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                Privacy / DPIA / DPA: {PRIVACY_EMAIL_ADDRESS}
+                <br />
+                Legal: {LEGAL_EMAIL_ADDRESS}
+                <br />
+                Compliance / Meta deletion: {COMPLIANCE_EMAIL_ADDRESS}
               </p>
             </div>
 

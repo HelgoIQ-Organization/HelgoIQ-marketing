@@ -36,7 +36,11 @@ const footerLinks: Record<string, FooterLink[]> = {
   ],
   Legal: [
     { label: 'Privacy Policy', to: '/privacy' },
-    { label: 'Terms of Service', to: '/terms' },
+    { label: 'Website Terms', to: '/terms' },
+    { label: 'SMS policy', to: '/sms-consent' },
+    { label: 'Meta data deletion', to: '/data-deletion' },
+    { label: 'Platform Privacy', to: '/platform-privacy' },
+    { label: 'Platform Terms', to: '/platform-terms' },
     { label: 'DPA', to: '/dpa' },
     { label: 'DPIA overview', to: '/dpia' },
     { label: 'Sub-processors', to: '/subprocessors' },

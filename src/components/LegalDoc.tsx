@@ -42,6 +42,18 @@ export default function LegalDoc({ title, updated, holding = true, children }: P
             <Link to="/terms" className="text-forest-600 font-medium hover:underline">
               Terms
             </Link>
+            <Link to="/sms-consent" className="text-forest-600 font-medium hover:underline">
+              SMS
+            </Link>
+            <Link to="/data-deletion" className="text-forest-600 font-medium hover:underline">
+              Meta deletion
+            </Link>
+            <Link to="/platform-privacy" className="text-forest-600 font-medium hover:underline">
+              Platform privacy
+            </Link>
+            <Link to="/platform-terms" className="text-forest-600 font-medium hover:underline">
+              Platform terms
+            </Link>
             <Link to="/dpa" className="text-forest-600 font-medium hover:underline">
               DPA
             </Link>
