@@ -24,5 +24,8 @@ export const REGISTERED_OFFICE_SINGLE_LINE = [
   REGISTERED_OFFICE.postcode,
 ].join(', ')
 
+/** Public contact addresses — always @helgoiq.com (never legacy brand domains). */
 export const CONTACT_EMAIL_ADDRESS = 'hello@helgoiq.com'
 export const PRIVACY_EMAIL_ADDRESS = 'privacy@helgoiq.com'
+export const LEGAL_EMAIL_ADDRESS = 'legal@helgoiq.com'
+export const COMPLIANCE_EMAIL_ADDRESS = 'compliance@helgoiq.com'

@@ -13,6 +13,10 @@ import BookDemo from './pages/BookDemo'
 import ForPilates from './pages/ForPilates'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
+import DataDeletion from './pages/DataDeletion'
+import SmsConsent from './pages/SmsConsent'
+import PlatformPrivacy from './pages/PlatformPrivacy'
+import PlatformTerms from './pages/PlatformTerms'
 import Dpia from './pages/Dpia'
 import Dpa from './pages/Dpa'
 import Trust from './pages/Trust'
@@ -42,6 +46,10 @@ export default function App() {
             <Route path="/for/pilates" element={<ForPilates />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/data-deletion" element={<DataDeletion />} />
+            <Route path="/sms-consent" element={<SmsConsent />} />
+            <Route path="/platform-privacy" element={<PlatformPrivacy />} />
+            <Route path="/platform-terms" element={<PlatformTerms />} />
             <Route path="/dpia" element={<Dpia />} />
             <Route path="/dpa" element={<Dpa />} />
             <Route path="/subprocessors" element={<SubProcessors />} />

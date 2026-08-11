@@ -1,2 +1,3 @@
+# Static files in /public (including Meta legal *.html) are served before this rule.
 # SPA fallback for client routes. /api/* is served by Pages Functions.
 /*    /index.html   200

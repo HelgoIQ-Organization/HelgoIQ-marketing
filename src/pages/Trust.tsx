@@ -13,14 +13,38 @@ const docs = [
   {
     icon: Shield,
     title: 'Privacy Policy',
-    body: 'How HelgoIQ handles marketing-site and platform personal data, roles, retention, and rights.',
+    body: 'Website + Meta messaging privacy (Meta App Review URL also at /privacy.html).',
     to: '/privacy',
   },
   {
     icon: Scale,
-    title: 'Terms of Service',
-    body: 'Holding terms for trials, paid plans, acceptable use, and governing law (England & Wales).',
+    title: 'Website Terms',
+    body: 'Marketing-site terms configured for Meta (also at /terms.html).',
     to: '/terms',
+  },
+  {
+    icon: Shield,
+    title: 'Platform Privacy',
+    body: 'Holding policy for studio/member data, Meta, Stripe, Twilio and other providers.',
+    to: '/platform-privacy',
+  },
+  {
+    icon: Scale,
+    title: 'Platform Terms',
+    body: 'Holding subscription terms — @helgoiq.com contacts only; SLA/fees pending counsel.',
+    to: '/platform-terms',
+  },
+  {
+    icon: FileText,
+    title: 'SMS Communication Policy',
+    body: 'Consent, STOP/HELP, and non-sharing of mobile opt-in data (Twilio verification).',
+    to: '/sms-consent',
+  },
+  {
+    icon: FileText,
+    title: 'Meta data deletion',
+    body: 'User-data-deletion instructions for Facebook/Instagram connections.',
+    to: '/data-deletion',
   },
   {
     icon: FileText,

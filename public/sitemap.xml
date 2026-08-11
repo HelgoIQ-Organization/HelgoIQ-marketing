@@ -81,7 +81,47 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://helgoiq.com/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
     <loc>https://helgoiq.com/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/terms.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/sms-consent</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/sms-consent.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/data-deletion</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/data-deletion.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/platform-privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/platform-terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
