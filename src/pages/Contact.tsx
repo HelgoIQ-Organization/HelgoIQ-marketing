@@ -105,6 +105,12 @@ export default function Contact() {
             >
               Trust centre (Privacy, Terms, DPIA) →
             </Link>
+            <Link
+              to="/reviews"
+              className="block text-center text-sm font-medium text-forest-600 hover:underline"
+            >
+              Reviews &amp; Google listing pack →
+            </Link>
           </div>
         </div>
       </section>

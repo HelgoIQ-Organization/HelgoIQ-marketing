@@ -25,6 +25,7 @@ import Contact from './pages/Contact'
 import SubProcessors from './pages/SubProcessors'
 import Status from './pages/Status'
 import Brand from './pages/Brand'
+import Reviews from './pages/Reviews'
 import CookieConsent from './components/CookieConsent'
 
 export default function App() {
@@ -58,6 +59,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/status" element={<Status />} />
             <Route path="/brand" element={<Brand />} />
+            <Route path="/reviews" element={<Reviews />} />
           </Routes>
         </main>
         <Footer />

@@ -60,6 +60,14 @@ export default function ForPilates() {
             operating clarity a boutique reformer studio needs.”
           </blockquote>
           <cite className="not-italic text-sm font-semibold text-forest-600">REFRM Pilates</cite>
+          <div className="mt-6">
+            <Link
+              to="/reviews"
+              className="inline-flex items-center gap-2 text-sm font-medium text-forest-600 hover:gap-3 transition-all"
+            >
+              More operator reviews <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
 
