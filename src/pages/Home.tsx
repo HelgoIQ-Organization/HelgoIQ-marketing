@@ -236,6 +236,14 @@ export default function Home() {
               </figure>
             ))}
           </div>
+          <div className="text-center mt-10">
+            <Link
+              to="/reviews"
+              className="inline-flex items-center gap-2 text-sm font-medium text-forest-600 hover:gap-3 transition-all"
+            >
+              Read reviews and platform setup <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
 

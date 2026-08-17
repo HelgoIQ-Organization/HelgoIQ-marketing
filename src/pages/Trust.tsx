@@ -156,6 +156,11 @@ export default function Trust() {
           <Link to="/migrate" className="btn-primary">
             Migration overview <ArrowRight size={15} />
           </Link>
+          <div className="mt-4">
+            <Link to="/reviews" className="text-sm font-medium text-forest-600 hover:underline">
+              Reviews, Trustpilot, and Google listing pack →
+            </Link>
+          </div>
           <div className="mt-10">
             <CtaButtons className="justify-center" />
           </div>
