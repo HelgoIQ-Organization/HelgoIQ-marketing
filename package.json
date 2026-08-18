@@ -7,8 +7,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --experimental-strip-types --test test/*.test.ts",
-    "deploy:preview": "pnpm build && wrangler pages deploy dist --project-name=$CLOUDFLARE_PAGES_PROJECT --branch=preview --commit-dirty=true",
-    "deploy:production": "pnpm build && wrangler pages deploy dist --project-name=$CLOUDFLARE_PAGES_PROJECT --branch=main --commit-dirty=true"
+    "deploy:preview": "pnpm build && npx --yes wrangler pages deploy dist --project-name=$CLOUDFLARE_PAGES_PROJECT --branch=preview --commit-dirty=true",
+    "deploy:production": "pnpm build && npx --yes wrangler pages deploy dist --project-name=$CLOUDFLARE_PAGES_PROJECT --branch=main --commit-dirty=true",
+    "deploy:verify": "node --experimental-strip-types scripts/verify-live-site.ts"
   },
   "dependencies": {
     "react": "^18.2.0",
