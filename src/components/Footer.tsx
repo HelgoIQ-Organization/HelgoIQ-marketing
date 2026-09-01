@@ -5,6 +5,8 @@ import {
   COMPANY_NUMBER_URL,
   REGISTERED_OFFICE_SINGLE_LINE,
 } from '../lib/company'
+import { REVIEW_BADGES_ENABLED } from '../data/foundingStudios'
+import { VERTICALS } from '../data/verticals'
 import { BOOK_DEMO_PATH, SIGN_IN_URL, TRIAL_SIGNUP_URL } from '../lib/urls'
 
 type FooterLink = { label: string; to?: string; href?: string }
@@ -13,8 +15,8 @@ const footerLinks: Record<string, FooterLink[]> = {
   Product: [
     { label: 'Features', to: '/features' },
     { label: 'Pricing', to: '/pricing' },
-    { label: 'For Pilates studios', to: '/for/pilates' },
-    { label: 'Switch / migrate', to: '/migrate' },
+    { label: 'Bring my site', to: '/migrate' },
+    ...VERTICALS.map(v => ({ label: v.shortName, to: v.path })),
     { label: 'Start free trial', href: TRIAL_SIGNUP_URL },
     { label: 'Book a demo', to: BOOK_DEMO_PATH },
     { label: 'Sign in', href: SIGN_IN_URL },
@@ -102,6 +104,14 @@ export default function Footer() {
                 Book a demo
               </Link>
             </div>
+            {/* Review badges — hidden until Capterra / GetApp listings exist. */}
+            {REVIEW_BADGES_ENABLED ? (
+              <div className="mt-6 flex flex-wrap gap-3" aria-label="Review platforms">
+                {/* Badge images drop in here when listings go live. */}
+              </div>
+            ) : (
+              <div className="mt-6" aria-hidden="true" data-review-badges-slot="pending" />
+            )}
           </div>
 
           {Object.entries(footerLinks).map(([section, links]) => (
