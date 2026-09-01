@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowRight,
@@ -9,24 +10,13 @@ import {
   Users,
   Zap,
 } from 'lucide-react'
-import CtaButtons from '../components/CtaButtons'
+import DemoVideoModal from '../components/DemoVideoModal'
+import FoundingStudiosSection from '../components/FoundingStudiosSection'
+import HeroSplitVisual from '../components/HeroSplitVisual'
+import VerticalCardImage from '../components/VerticalCardImage'
+import { VERTICALS } from '../data/verticals'
 import { showcaseFeatures } from '../data/showcaseFeatures'
 import { BOOK_DEMO_PATH, TRIAL_SIGNUP_URL } from '../lib/urls'
-
-const proofStudios = [
-  {
-    name: 'REFRM Pilates',
-    role: 'Boutique reformer studio',
-    quote:
-      '[Placeholder — pending approved wording] HelgoIQ is the operating layer we wanted for bookings, memberships, and day-to-day studio clarity.',
-  },
-  {
-    name: 'Active247',
-    role: 'Multi-service fitness operator',
-    quote:
-      '[Placeholder — pending approved wording] One connected platform for scheduling, CRM follow-up, and the decisions that fill the room.',
-  },
-]
 
 const connected = [
   {
@@ -85,15 +75,19 @@ const pillars = [
   {
     icon: Users,
     title: 'Team & ops',
-    body: 'Rota, permissions, payroll hooks, and a daily command view so owners aren’t the only people who know what’s on fire.',
+    body: 'Rota, permissions, payroll hooks, and a daily command view so owners aren\u2019t the only people who know what\u2019s on fire.',
     to: '/features/team',
   },
 ]
 
 export default function Home() {
+  const [demoOpen, setDemoOpen] = useState(false)
+
   return (
     <div>
-      {/* Brand-first full-bleed Helgoland hero */}
+      <DemoVideoModal open={demoOpen} onClose={() => setDemoOpen(false)} />
+
+      {/* Hero — outcome promise */}
       <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden text-white">
         <img
           src="/images/helgoland-hero.webp"
@@ -104,28 +98,47 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(10,22,16,0.35) 0%, rgba(10,22,16,0.25) 40%, rgba(10,22,16,0.78) 100%)',
+              'linear-gradient(180deg, rgba(10,22,16,0.35) 0%, rgba(10,22,16,0.35) 35%, rgba(10,22,16,0.82) 100%)',
           }}
           aria-hidden
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pb-16 pt-28 w-full">
-          <div className="max-w-2xl animate-fade-up">
-            <p
-              className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-5 leading-none"
-              style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}
-            >
-              HelgoIQ
-            </p>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white/95 mb-4 max-w-xl">
-              Everything your studio needs. Nothing it doesn’t.
-            </h1>
-            <p className="text-white/85 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
-              One connected operating platform for bookings, memberships, websites, payments,
-              marketing, and AI intelligence.
-            </p>
-            <CtaButtons variant="forest" />
-            <p className="text-xs text-white/55 mt-4">No card required for trial · Cancel anytime</p>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pb-14 pt-28 w-full">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-end">
+            <div className="max-w-xl animate-fade-up">
+              <p
+                className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-5 leading-none"
+                style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic' }}
+              >
+                HelgoIQ
+              </p>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white/95 mb-4">
+                Your studio online in days, not months.
+              </h1>
+              <p className="text-white/85 text-base sm:text-lg leading-relaxed mb-8">
+                Paste your current website. We import it, protect your Google rankings for 30 days,
+                and connect your timetable, booking and payments — live in one platform. Our team
+                walks you through every step.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link to="/migrate" className="btn-dark text-base py-3 px-7">
+                  Bring my site <ArrowRight size={16} />
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setDemoOpen(true)}
+                  className="inline-flex items-center justify-center gap-2 border border-forest-400/50 text-white px-7 py-3 rounded-lg font-medium text-base hover:bg-forest-500/30 transition-all"
+                >
+                  See it working
+                </button>
+              </div>
+              <p className="text-xs text-white/55 mt-4">
+                Import in minutes · Rankings protected for 30 days · Guided cutover
+              </p>
+            </div>
+            <div className="animate-fade-up">
+              <HeroSplitVisual />
+            </div>
           </div>
         </div>
       </section>
@@ -157,8 +170,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product screenshots — how each surface helps studios */}
-      <section className="py-8 bg-mist">
+      {/* Built for how your studio runs */}
+      <section id="verticals" className="py-20 bg-mist">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-12">
+            <p className="section-label mb-3">Who it’s for</p>
+            <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight">
+              Built for how your studio runs
+            </h2>
+            <p className="text-gray-600 mt-4 leading-relaxed">
+              Six operator types. Same platform. Pick the path that matches the floor you run.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {VERTICALS.map(v => (
+              <Link
+                key={v.slug}
+                to={v.path}
+                className="group card overflow-hidden flex flex-col hover:-translate-y-0.5 transition-transform"
+              >
+                <div className="aspect-[16/10]">
+                  <VerticalCardImage label={v.imageLabel} imageSrc={v.imageSrc} />
+                </div>
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-forest-600 transition-colors mb-3">
+                    {v.name}
+                  </h3>
+                  <ul className="flex flex-wrap gap-1.5 mb-4">
+                    {v.teaser.map(t => (
+                      <li
+                        key={t}
+                        className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-forest-50 text-forest-700"
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-forest-600 group-hover:gap-2 transition-all">
+                    Explore <ArrowRight size={14} />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product screenshots */}
+      <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-12 pb-4">
           <p className="section-label mb-3">In the product</p>
           <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight max-w-2xl">
@@ -216,80 +275,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Proof */}
-      <section className="py-16 bg-white border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <p className="section-label mb-8 text-center">Studios on HelgoIQ</p>
-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            {proofStudios.map(studio => (
-              <figure key={studio.name}>
-                <blockquote
-                  className="text-lg text-gray-700 leading-relaxed mb-4"
-                  style={{ fontFamily: 'Cormorant Garamond, serif' }}
-                >
-                  “{studio.quote}”
-                </blockquote>
-                <figcaption>
-                  <div className="text-sm font-semibold text-forest-600">{studio.name}</div>
-                  <div className="text-xs text-gray-500 mt-0.5">{studio.role}</div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/reviews"
-              className="inline-flex items-center gap-2 text-sm font-medium text-forest-600 hover:gap-3 transition-all"
-            >
-              Read reviews and platform setup <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ICP path */}
-      <section className="py-20 bg-mist">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-2xl mb-12">
-            <p className="section-label mb-3">Built for operators</p>
-            <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 tracking-tight">
-              Start with how your studio actually runs
-            </h2>
-            <p className="text-gray-600 mt-4 leading-relaxed">
-              Pilates and boutique fitness first — reformer capacity, trial conversion, and member
-              continuity — then the same platform grows with you.
-            </p>
-          </div>
-          <Link
-            to="/for/pilates"
-            className="group block max-w-3xl rounded-2xl overflow-hidden relative text-white transition-transform duration-300 hover:-translate-y-0.5"
-          >
-            <img
-              src="/images/helgoland-hero.webp"
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover"
-              aria-hidden
-            />
-            <div className="absolute inset-0 bg-forest-800/75" aria-hidden />
-            <div className="relative p-8 sm:p-10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-forest-200 mb-3">
-                Primary ICP
-              </p>
-              <h3 className="text-2xl sm:text-3xl font-semibold mb-3">HelgoIQ for Pilates</h3>
-              <p className="text-forest-50/95 max-w-xl leading-relaxed mb-6">
-                Spot-aware scheduling, waitlists, intro offers, and retention workflows shaped for
-                reformer and boutique Pilates studios.
-              </p>
-              <span className="inline-flex items-center gap-2 text-sm font-medium text-white group-hover:gap-3 transition-all">
-                Explore the Pilates path <ArrowRight size={16} />
-              </span>
-            </div>
-          </Link>
-        </div>
-      </section>
-
       {/* Feature depth links */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-mist">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mb-12">
             <p className="section-label mb-3">Platform</p>
@@ -321,6 +308,8 @@ export default function Home() {
         </div>
       </section>
 
+      <FoundingStudiosSection />
+
       {/* Dual path pricing tease */}
       <section className="py-20 bg-forest-600 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
@@ -335,7 +324,17 @@ export default function Home() {
               Core starts free. Growth and Premium unlock analytics, automation, and the full AI
               suite. Enterprise is for multi-location groups who want a walkthrough first.
             </p>
-            <CtaButtons variant="forest" />
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href={TRIAL_SIGNUP_URL} className="btn-dark text-base py-3 px-7">
+                Start free trial <ArrowRight size={16} />
+              </a>
+              <Link
+                to={BOOK_DEMO_PATH}
+                className="inline-flex items-center gap-2 border border-forest-400/50 text-white px-7 py-3 rounded-lg font-medium text-base hover:bg-forest-500/30 transition-all"
+              >
+                Book a demo
+              </Link>
+            </div>
           </div>
           <div className="space-y-4">
             {[
@@ -387,10 +386,13 @@ export default function Home() {
             the complexity of running a modern studio without the chaos of five tools.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href={TRIAL_SIGNUP_URL} className="btn-dark text-base py-3 px-8">
-              Start free trial <ArrowRight size={16} />
-            </a>
-            <Link to={BOOK_DEMO_PATH} className="btn-secondary border-white/40 text-white hover:bg-white/10 text-base py-3 px-8">
+            <Link to="/migrate" className="btn-dark text-base py-3 px-8">
+              Bring my site <ArrowRight size={16} />
+            </Link>
+            <Link
+              to={BOOK_DEMO_PATH}
+              className="btn-secondary border-white/40 text-white hover:bg-white/10 text-base py-3 px-8"
+            >
               Book a demo
             </Link>
           </div>
