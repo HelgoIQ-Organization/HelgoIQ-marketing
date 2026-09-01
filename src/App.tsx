@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -10,7 +11,7 @@ import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Trial from './pages/Trial'
 import BookDemo from './pages/BookDemo'
-import ForPilates from './pages/ForPilates'
+import ForVertical from './pages/ForVertical'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import DataDeletion from './pages/DataDeletion'
@@ -28,10 +29,29 @@ import Brand from './pages/Brand'
 import Reviews from './pages/Reviews'
 import CookieConsent from './components/CookieConsent'
 
+function HashScroll() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo(0, 0)
+      return
+    }
+    const id = decodeURIComponent(hash.replace(/^#/, ''))
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [pathname, hash])
+
+  return null
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
+        <HashScroll />
         <Header />
         <main className="flex-1">
           <Routes>
@@ -44,7 +64,7 @@ export default function App() {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/trial" element={<Trial />} />
             <Route path="/book-demo" element={<BookDemo />} />
-            <Route path="/for/pilates" element={<ForPilates />} />
+            <Route path="/for/:slug" element={<ForVertical />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/data-deletion" element={<DataDeletion />} />
