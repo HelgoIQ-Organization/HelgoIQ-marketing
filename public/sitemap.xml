@@ -51,6 +51,31 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://helgoiq.com/for/unstaffed-gyms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/for/multi-site</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/for/boutique-fitness</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/for/personal-trainers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://helgoiq.com/for/wellness-recovery</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://helgoiq.com/book-demo</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
