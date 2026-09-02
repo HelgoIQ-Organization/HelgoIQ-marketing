@@ -3,15 +3,15 @@ import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { BOOK_DEMO_PATH, SIGN_IN_URL, TRIAL_SIGNUP_URL } from '../lib/urls'
 
-// Pages that have a dark hero — header starts transparent with white text
-const DARK_HERO_PAGES = ['/', '/book-demo', '/for/pilates']
-
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
 
-  const hasDarkHero = DARK_HERO_PAGES.includes(location.pathname)
+  const hasDarkHero =
+    location.pathname === '/' ||
+    location.pathname === '/book-demo' ||
+    location.pathname.startsWith('/for/')
   const isTransparent = hasDarkHero && !scrolled
 
   useEffect(() => {
@@ -27,8 +27,8 @@ export default function Header() {
   const navLinks = [
     { label: 'Features', to: '/features' },
     { label: 'Pricing', to: '/pricing' },
-    { label: 'For Pilates', to: '/for/pilates' },
-    { label: 'Switch', to: '/migrate' },
+    { label: 'For studios', to: '/#verticals' },
+    { label: 'Bring my site', to: '/migrate' },
     { label: 'About', to: '/about' },
     { label: 'Reviews', to: '/reviews' },
     { label: 'Blog', to: '/blog' },
