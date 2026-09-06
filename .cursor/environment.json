@@ -1,6 +1,6 @@
 {
   "name": "HelgoIQ marketing site",
-  "install": "CI=true pnpm install --frozen-lockfile",
+  "install": "if [ -f /agent/repos/HelgoIQ-marketing/package.json ]; then cd /agent/repos/HelgoIQ-marketing; elif [ -f /workspace/package.json ]; then cd /workspace; fi; CI=true pnpm install --frozen-lockfile",
   "terminals": [
     {
       "name": "dev",
