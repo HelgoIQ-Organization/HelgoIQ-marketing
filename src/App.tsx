@@ -27,6 +27,7 @@ import SubProcessors from './pages/SubProcessors'
 import Status from './pages/Status'
 import Brand from './pages/Brand'
 import Reviews from './pages/Reviews'
+import CompetitiveLab from './pages/review/CompetitiveLab'
 import CookieConsent from './components/CookieConsent'
 
 function HashScroll() {
@@ -80,6 +81,7 @@ export default function App() {
             <Route path="/status" element={<Status />} />
             <Route path="/brand" element={<Brand />} />
             <Route path="/reviews" element={<Reviews />} />
+            <Route path="/review/competitive-lab" element={<CompetitiveLab />} />
           </Routes>
         </main>
         <Footer />

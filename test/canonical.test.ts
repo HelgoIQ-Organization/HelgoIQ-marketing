@@ -3,7 +3,9 @@ import { describe, it } from 'node:test'
 import {
   APEX_HOST,
   apexCanonicalUrl,
+  isReviewLabPath,
   rewriteMetaHtmlPath,
+  withReviewLabHeaders,
   WWW_HOST,
 } from '../functions/_lib/canonical.ts'
 
@@ -42,5 +44,20 @@ describe('apexCanonicalUrl', () => {
       apexCanonicalUrl(new URL('https://example.pages.dev/privacy.html')),
       null,
     )
+  })
+})
+
+describe('review lab gate', () => {
+  it('treats /review and nested lab paths as gated', () => {
+    assert.equal(isReviewLabPath('/review'), true)
+    assert.equal(isReviewLabPath('/review/competitive-lab'), true)
+    assert.equal(isReviewLabPath('/reviews'), false)
+    assert.equal(isReviewLabPath('/features'), false)
+  })
+
+  it('sets X-Robots-Tag noindex on gated responses', () => {
+    const headers = withReviewLabHeaders(new Headers({ 'content-type': 'text/html' }))
+    assert.equal(headers.get('X-Robots-Tag'), 'noindex, nofollow')
+    assert.equal(headers.get('content-type'), 'text/html')
   })
 })
