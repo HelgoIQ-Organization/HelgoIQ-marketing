@@ -2,9 +2,15 @@
  * Edge routing for the production marketing host:
  * - 301 www.helgoiq.com → helgoiq.com (matches sitemap / canonical tags)
  * - Serve Meta App Review *.html at the exact path with 200 (no pretty-URL 308)
+ * - Gated /review/* labs send X-Robots-Tag: noindex, nofollow
  */
 
-import { apexCanonicalUrl, rewriteMetaHtmlPath } from './_lib/canonical'
+import {
+  apexCanonicalUrl,
+  isReviewLabPath,
+  rewriteMetaHtmlPath,
+  withReviewLabHeaders,
+} from './_lib/canonical'
 
 type PagesContext = {
   request: Request
@@ -33,5 +39,10 @@ export async function onRequest(context: PagesContext): Promise<Response> {
     })
   }
 
-  return context.next()
+  const upstream = await context.next()
+  if (!isReviewLabPath(url.pathname)) return upstream
+  return new Response(upstream.body, {
+    status: upstream.status,
+    headers: withReviewLabHeaders(upstream.headers),
+  })
 }

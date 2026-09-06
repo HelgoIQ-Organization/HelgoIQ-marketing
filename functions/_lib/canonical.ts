@@ -26,3 +26,16 @@ export function apexCanonicalUrl(url: URL): URL | null {
   next.port = ''
   return next
 }
+
+/** Gated review labs — never index, never sitemap. */
+export const REVIEW_LAB_PREFIX = '/review'
+
+export function isReviewLabPath(pathname: string): boolean {
+  return pathname === REVIEW_LAB_PREFIX || pathname.startsWith(`${REVIEW_LAB_PREFIX}/`)
+}
+
+export function withReviewLabHeaders(headers: Headers): Headers {
+  const next = new Headers(headers)
+  next.set('X-Robots-Tag', 'noindex, nofollow')
+  return next
+}
